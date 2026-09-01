@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://c05frcnfxepyd"]
+
+[ext_resource type="Script" uid="uid://dssvoete6h1v4" path="res://Objects/ObjectScripts/AlmondWater.gd" id="1_0lb74"]
+[ext_resource type="Texture2D" uid="uid://c0yx2561e3n8r" path="res://Objects/ObjectImages/AlmondWater.png" id="2_xxbva"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dw882"]
+size = Vector2(310, 779)
+
+[node name="AlmondWater" type="Area2D" unique_id=491192756]
+scale = Vector2(0.3, 0.3)
+script = ExtResource("1_0lb74")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=957615911]
+texture = ExtResource("2_xxbva")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2064824863]
+position = Vector2(0, -2.5)
+shape = SubResource("RectangleShape2D_dw882")
+
+[connection signal="body_entered" from="." to="." method="colected"]

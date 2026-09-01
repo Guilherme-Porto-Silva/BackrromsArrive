@@ -1,0 +1,55 @@
+[gd_scene format=3 uid="uid://n3xjafoxynn6"]
+
+[ext_resource type="Script" uid="uid://dwf8j1gag6m0o" path="res://Spaces/SpaceScripts/Menu/menu.gd" id="1_q4dxv"]
+[ext_resource type="Texture2D" uid="uid://cweafllw72c6k" path="res://Spaces/SpaceImages/Menu/menuBackground.png" id="2_lgnn3"]
+
+[node name="Menu" type="Control" unique_id=1041499280]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_q4dxv")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=680304052]
+position = Vector2(578.125, 329)
+scale = Vector2(1.1597292, 0.8817204)
+texture = ExtResource("2_lgnn3")
+
+[node name="Play" type="Button" parent="." unique_id=884592887]
+layout_mode = 0
+offset_left = 14.0
+offset_top = 54.0
+offset_right = 133.0
+offset_bottom = 85.0
+text = "Jogar"
+
+[node name="Quit" type="Button" parent="." unique_id=764906653]
+layout_mode = 0
+offset_left = 11.0
+offset_top = 172.0
+offset_right = 132.0
+offset_bottom = 203.0
+text = "Sair"
+
+[node name="Config" type="Button" parent="." unique_id=406336571]
+layout_mode = 0
+offset_left = 14.0
+offset_top = 94.0
+offset_right = 133.0
+offset_bottom = 125.0
+text = "Configurações"
+
+[node name="Credits" type="Button" parent="." unique_id=912884073]
+layout_mode = 0
+offset_left = 11.0
+offset_top = 134.0
+offset_right = 131.0
+offset_bottom = 165.0
+text = "Créditos"
+
+[connection signal="pressed" from="Play" to="." method="play"]
+[connection signal="pressed" from="Quit" to="." method="quit"]
+[connection signal="pressed" from="Config" to="." method="enter_game_config"]
+[connection signal="pressed" from="Credits" to="." method="show_game_credits"]

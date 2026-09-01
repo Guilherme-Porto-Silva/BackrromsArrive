@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://fpcd55py7s77"]
+
+[ext_resource type="Script" uid="uid://trd4egpbrde5" path="res://Characters/CharacterScripts/Enemies/SkinStealler.gd" id="1_6uxa7"]
+[ext_resource type="Texture2D" uid="uid://bd001qq55cb0l" path="res://Characters/CharacterImages/Enemies/SkinStealler.png" id="1_a346q"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dw882"]
+size = Vector2(268, 809)
+
+[node name="SkinStealler" type="CharacterBody2D" unique_id=450853842 groups=["enemies"]]
+scale = Vector2(0.7, 0.7)
+script = ExtResource("1_6uxa7")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=977306067]
+texture = ExtResource("1_a346q")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1610443343]
+position = Vector2(4, 4.5)
+shape = SubResource("RectangleShape2D_dw882")

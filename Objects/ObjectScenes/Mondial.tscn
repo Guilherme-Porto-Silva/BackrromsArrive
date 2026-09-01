@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://cxyq2r0qqlixm"]
+
+[ext_resource type="Texture2D" uid="uid://ghwlfy1cg53p" path="res://Objects/ObjectImages/mondial.png" id="1_8m8s6"]
+[ext_resource type="Script" uid="uid://cw52yjyo8e4vj" path="res://Objects/ObjectScripts/Mondial.gd" id="1_kqlx1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dw882"]
+size = Vector2(377, 550)
+
+[node name="Mondial" type="Area2D" unique_id=697734525]
+scale = Vector2(0.35, 0.35)
+script = ExtResource("1_kqlx1")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=772586811]
+texture = ExtResource("1_8m8s6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1571830001]
+position = Vector2(4.5, -24)
+shape = SubResource("RectangleShape2D_dw882")
+
+[connection signal="body_entered" from="." to="." method="colected"]

@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://cd4fjfp24j3e8"]
+
+[ext_resource type="Script" uid="uid://13fynbx8w4au" path="res://Spaces/SpaceScripts/Menu/character_selection.gd" id="1_ccc87"]
+[ext_resource type="Texture2D" uid="uid://cweafllw72c6k" path="res://Spaces/SpaceImages/Menu/menuBackground.png" id="2_lyxiq"]
+[ext_resource type="Texture2D" uid="uid://b52n2ow7faka5" path="res://Characters/CharacterImages/Guigui-chan/Guigui-chanIcon.png" id="3_r4qxn"]
+
+[node name="CharacterSelection" type="Control" unique_id=1959195570]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1152.0
+offset_bottom = 647.0
+script = ExtResource("1_ccc87")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1645946455]
+position = Vector2(575.5, 324.5)
+scale = Vector2(1.1564695, 0.875)
+texture = ExtResource("2_lyxiq")
+
+[node name="ChoseGuigui-chan" type="Button" parent="." unique_id=1157742009]
+layout_mode = 0
+offset_left = 86.0
+offset_top = 230.0
+offset_right = 292.0
+offset_bottom = 432.0
+
+[node name="Sprite2D" type="Sprite2D" parent="ChoseGuigui-chan" unique_id=1622539728]
+position = Vector2(102.000015, 100)
+scale = Vector2(0.44327176, 0.282392)
+texture = ExtResource("3_r4qxn")
+
+[connection signal="pressed" from="ChoseGuigui-chan" to="." method="chose_Guigui_chan"]

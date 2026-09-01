@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://csox7rtc1sii3"]
+
+[ext_resource type="Texture2D" uid="uid://c3hljk2d05edr" path="res://Objects/ObjectImages/filter.png" id="1_sekyk"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dw882"]
+size = Vector2(532, 400)
+
+[node name="Filter" type="Area2D" unique_id=1545427767]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1557628312]
+texture = ExtResource("1_sekyk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=324038366]
+position = Vector2(-2, -1)
+shape = SubResource("RectangleShape2D_dw882")

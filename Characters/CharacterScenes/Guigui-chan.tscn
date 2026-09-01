@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://bnnw1fuslexmr"]
+
+[ext_resource type="Texture2D" uid="uid://b52n2ow7faka5" path="res://Characters/CharacterImages/Guigui-chan/Guigui-chanIcon.png" id="1_0xv4h"]
+[ext_resource type="Script" uid="uid://ccjflj07bfnax" path="res://Characters/CharacterScripts/Guigui-chan.gd" id="1_mf7wv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dw882"]
+size = Vector2(364, 587)
+
+[node name="Guigui-chan" type="CharacterBody2D" unique_id=656459508]
+scale = Vector2(0.3, 0.3)
+script = ExtResource("1_mf7wv")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=317752793]
+texture = ExtResource("1_0xv4h")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1940624451]
+position = Vector2(1, -1.5)
+shape = SubResource("RectangleShape2D_dw882")

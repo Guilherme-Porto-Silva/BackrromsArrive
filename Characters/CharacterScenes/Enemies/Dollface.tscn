@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://d0y1areqq3jn1"]
+
+[ext_resource type="Script" uid="uid://d30iydjbdqun7" path="res://Characters/CharacterScripts/Enemies/Dollface.gd" id="1_23g5u"]
+[ext_resource type="Texture2D" uid="uid://dly7ngv8yqcp0" path="res://Characters/CharacterImages/Enemies/Dollface.png" id="1_123bn"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dw882"]
+size = Vector2(92, 185)
+
+[node name="Dollface" type="CharacterBody2D" unique_id=1084668826]
+script = ExtResource("1_23g5u")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1392284717]
+texture = ExtResource("1_123bn")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1179020819]
+position = Vector2(3, 0.5)
+shape = SubResource("RectangleShape2D_dw882")

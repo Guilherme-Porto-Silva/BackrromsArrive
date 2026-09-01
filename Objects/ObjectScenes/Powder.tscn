@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://dvrwbnq1e5xve"]
+
+[ext_resource type="Script" uid="uid://bgpbamrrmwu5w" path="res://Objects/ObjectScripts/Powder.gd" id="1_2dhaq"]
+[ext_resource type="Texture2D" uid="uid://dae0pk1ihu4q8" path="res://Objects/ObjectImages/powder.png" id="2_k0faj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dw882"]
+size = Vector2(348, 696)
+
+[node name="Powder" type="Area2D" unique_id=1951735317]
+scale = Vector2(0.3, 0.3)
+script = ExtResource("1_2dhaq")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=223201373]
+texture = ExtResource("2_k0faj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=285278005]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_dw882")

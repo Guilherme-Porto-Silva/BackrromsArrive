@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://dqhy302qvtcps"]
+
+[ext_resource type="Script" uid="uid://ba1w1b55hbws1" path="res://Objects/ObjectScripts/Kian.gd" id="1_cx18e"]
+[ext_resource type="Texture2D" uid="uid://d0eneuqhjqu86" path="res://Objects/ObjectImages/kian.png" id="1_oqvq7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dw882"]
+size = Vector2(395, 517)
+
+[node name="Kian" type="Area2D" unique_id=471241113]
+scale = Vector2(0.35, 0.35)
+script = ExtResource("1_cx18e")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1351215896]
+texture = ExtResource("1_oqvq7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=272439846]
+position = Vector2(-13.5, -4.5)
+shape = SubResource("RectangleShape2D_dw882")
+
+[connection signal="body_entered" from="." to="." method="colected"]

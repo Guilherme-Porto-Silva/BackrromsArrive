@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://bmsx7tpc5w11y"]
+
+[ext_resource type="Texture2D" uid="uid://dfs43idgg42vj" path="res://Characters/CharacterImages/Enemies/Smiler.png" id="1_tg6sj"]
+[ext_resource type="Script" uid="uid://dt5ff1hbvthww" path="res://Characters/CharacterScripts/Enemies/Smiler.gd" id="1_ub4h1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dw882"]
+size = Vector2(635, 570)
+
+[node name="Smiler" type="CharacterBody2D" unique_id=211760493 groups=["enemies"]]
+scale = Vector2(0.35, 0.35)
+script = ExtResource("1_ub4h1")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=387700580]
+texture = ExtResource("1_tg6sj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1840374714]
+position = Vector2(-0.5, 0)
+shape = SubResource("RectangleShape2D_dw882")

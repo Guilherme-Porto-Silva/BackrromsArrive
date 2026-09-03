@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://dudifdlhxrv02"]
+
+[ext_resource type="Script" uid="uid://deu4db7ygyth4" path="res://Characters/CharacterScripts/Enemies/Hound.gd" id="1_fhvgu"]
+[ext_resource type="Texture2D" uid="uid://b3bva65hcxqif" path="res://Characters/CharacterImages/Enemies/hound.png" id="2_q72y7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dw882"]
+size = Vector2(172, 105)
+
+[node name="Hound" type="CharacterBody2D" unique_id=1668394714]
+script = ExtResource("1_fhvgu")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=142339705]
+texture = ExtResource("2_q72y7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1484324133]
+position = Vector2(2, -0.5)
+shape = SubResource("RectangleShape2D_dw882")

@@ -1,0 +1,65 @@
+[gd_scene format=3 uid="uid://dkqqeq2at1lru"]
+
+[ext_resource type="Texture2D" uid="uid://cvejwopeqka4h" path="res://Spaces/SpaceImages/Level0/gray-carpet.jpg" id="1_portu"]
+[ext_resource type="PackedScene" uid="uid://bnnw1fuslexmr" path="res://Characters/CharacterScenes/Guigui-chan.tscn" id="2_c6g2w"]
+[ext_resource type="PackedScene" uid="uid://sewjfvrismom" path="res://Spaces/SpaceScenes/Level0/Components/frontways_level_0_wall.tscn" id="3_c6g2w"]
+[ext_resource type="PackedScene" uid="uid://umokqs2di0ue" path="res://Spaces/SpaceScenes/Level0/Components/sideways_level_0_wall.tscn" id="4_ipp2t"]
+[ext_resource type="Script" uid="uid://bhnnrpgsvpa0y" path="res://Spaces/SpaceScripts/Level0/left_door_listener.gd" id="5_ipp2t"]
+
+[sub_resource type="GDScript" id="GDScript_iecx3"]
+script/source = "extends Area2D
+
+const NEXT_SCENE := \"res://Spaces/SpaceScenes/Level0/Rooms/full_no_clipble_front_wall_room.tscn\"
+
+func _on_body_entered(body: Node2D) -> void:
+	
+	if body.is_in_group(\"players\"):
+		
+		get_tree().change_scene_to_file(NEXT_SCENE)
+"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dw882"]
+size = Vector2(80, 172)
+
+[node name="Level0start" type="Node2D" unique_id=1517996660]
+script = SubResource("GDScript_iecx3")
+
+[node name="Floor" type="Sprite2D" parent="." unique_id=1715278020]
+position = Vector2(576.5, 325.5)
+scale = Vector2(0.57435125, 0.3228543)
+texture = ExtResource("1_portu")
+
+[node name="Guigui-chan" parent="." unique_id=656459508 groups=["players"] instance=ExtResource("2_c6g2w")]
+z_index = 1
+position = Vector2(551, 355)
+
+[node name="leftFrontwaysWall" parent="." unique_id=783276937 instance=ExtResource("3_c6g2w")]
+position = Vector2(244, 93)
+
+[node name="rightFrontwaysWall" parent="." unique_id=1864200352 instance=ExtResource("3_c6g2w")]
+position = Vector2(912, 94)
+
+[node name="leftTopSidewaysWall" parent="." unique_id=801993327 instance=ExtResource("4_ipp2t")]
+position = Vector2(12, 113)
+
+[node name="rightTopSidewaysWall" parent="." unique_id=1746380673 instance=ExtResource("4_ipp2t")]
+position = Vector2(1141, 87)
+
+[node name="leftBottomSidewaysWall" parent="." unique_id=644768385 instance=ExtResource("4_ipp2t")]
+position = Vector2(9, 656)
+
+[node name="rightBottomSidewaysWall" parent="." unique_id=1513268429 instance=ExtResource("4_ipp2t")]
+position = Vector2(1140, 646)
+
+[node name="leftInvisibleWall" parent="." unique_id=1204365447 instance=ExtResource("3_c6g2w")]
+position = Vector2(244.99998, 736)
+
+[node name="rightInvisibleWall" parent="." unique_id=1007167390 instance=ExtResource("3_c6g2w")]
+position = Vector2(907.99994, 737.99994)
+
+[node name="leftDoorListener" type="Area2D" parent="." unique_id=332329591]
+script = ExtResource("5_ipp2t")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="leftDoorListener" unique_id=922564251]
+position = Vector2(-32, 381)
+shape = SubResource("RectangleShape2D_dw882")

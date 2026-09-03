@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://uc40ue143my"]
+
+[ext_resource type="Texture2D" uid="uid://cvejwopeqka4h" path="res://Spaces/SpaceImages/Level0/gray-carpet.jpg" id="1_8qu7m"]
+[ext_resource type="PackedScene" uid="uid://dyu4mjdem4o2" path="res://Spaces/SpaceScenes/Level0/Components/nullZones/moist_left_null_zone_right_level_0_wall.tscn" id="2_g85lf"]
+[ext_resource type="PackedScene" uid="uid://sewjfvrismom" path="res://Spaces/SpaceScenes/Level0/Components/frontways_level_0_wall.tscn" id="3_0qqme"]
+[ext_resource type="PackedScene" uid="uid://srqtrqr4x6p1" path="res://Spaces/SpaceScenes/Level0/Components/moist/left_moist_level_0_wall.tscn" id="4_a3a6e"]
+
+[node name="fullNoClipbleFrontWallRoom" type="Node2D" unique_id=1175133351]
+
+[node name="Floor" type="Sprite2D" parent="." unique_id=290150787]
+position = Vector2(577, 326.5)
+scale = Vector2(0.5758483, 0.3258483)
+texture = ExtResource("1_8qu7m")
+
+[node name="moistLeftNullZoneRightLevel0wall" parent="." unique_id=967988161 instance=ExtResource("2_g85lf")]
+position = Vector2(262, 102)
+
+[node name="FrontwaysLevel0wall" parent="." unique_id=783276937 instance=ExtResource("3_0qqme")]
+position = Vector2(692.99994, 92.99999)
+
+[node name="LeftMoistLevel0wall" parent="." unique_id=1185216262 instance=ExtResource("4_a3a6e")]
+position = Vector2(1145, 116)

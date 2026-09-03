@@ -2,7 +2,7 @@ class_name PlaybleCharacter
 
 extends CharacterBody2D
 
-const SPEED = 100.0
+const SPEED = 300.0
 
 const full_hp: int = 100
 

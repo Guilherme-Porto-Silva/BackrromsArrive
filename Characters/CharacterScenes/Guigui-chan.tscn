@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://ccjflj07bfnax" path="res://Characters/CharacterScripts/Guigui-chan.gd" id="1_mf7wv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dw882"]
-size = Vector2(364, 587)
+size = Vector2(186.66666, 152)
 
 [node name="Guigui-chan" type="CharacterBody2D" unique_id=656459508]
 scale = Vector2(0.3, 0.3)
@@ -14,5 +14,5 @@ script = ExtResource("1_mf7wv")
 texture = ExtResource("1_0xv4h")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1940624451]
-position = Vector2(1, -1.5)
+position = Vector2(19.999992, 216)
 shape = SubResource("RectangleShape2D_dw882")

@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://dp7o7215oo1u1"]
+
+[ext_resource type="Script" uid="uid://cxnr4kbwwk100" path="res://Spaces/SpaceScripts/Wall.gd" id="1_k4a7j"]
+[ext_resource type="Texture2D" uid="uid://dg0p56xcoqurl" path="res://Spaces/SpaceImages/Level0/level0wallpaper.png" id="2_nsju6"]
+[ext_resource type="Texture2D" uid="uid://fsawxnt7e6u1" path="res://Spaces/SpaceImages/Level0/moistLevel0wallpaper.png" id="3_cabdx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dw882"]
+size = Vector2(2078, 939)
+
+[node name="RightMoistLevel0wall" type="StaticBody2D" unique_id=1299408016]
+scale = Vector2(0.25, 0.25)
+script = ExtResource("1_k4a7j")
+
+[node name="left" type="Sprite2D" parent="." unique_id=892744308]
+position = Vector2(-556, 0)
+texture = ExtResource("2_nsju6")
+
+[node name="right" type="Sprite2D" parent="." unique_id=37292211]
+position = Vector2(483.25, 1.5000198)
+scale = Vector2(1.0456499, 1.0075108)
+texture = ExtResource("3_cabdx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2080054982]
+position = Vector2(-72, -2.5)
+shape = SubResource("RectangleShape2D_dw882")

@@ -10,7 +10,7 @@ func play() -> void:
 	
 	Memory.teacup_found = false
 	
-	get_tree().change_scene_to_file("res://Spaces/SpaceScenes/Level0/Level0start.tscn")
+	get_tree().change_scene_to_file("res://Spaces/SpaceScenes/Level0/Rooms/Level0start.tscn")
 
 
 

@@ -4,25 +4,12 @@
 [ext_resource type="PackedScene" uid="uid://bnnw1fuslexmr" path="res://Characters/CharacterScenes/Guigui-chan.tscn" id="2_c6g2w"]
 [ext_resource type="PackedScene" uid="uid://sewjfvrismom" path="res://Spaces/SpaceScenes/Level0/Components/frontways_level_0_wall.tscn" id="3_c6g2w"]
 [ext_resource type="PackedScene" uid="uid://umokqs2di0ue" path="res://Spaces/SpaceScenes/Level0/Components/sideways_level_0_wall.tscn" id="4_ipp2t"]
-[ext_resource type="Script" uid="uid://bhnnrpgsvpa0y" path="res://Spaces/SpaceScripts/Level0/left_door_listener.gd" id="5_ipp2t"]
-
-[sub_resource type="GDScript" id="GDScript_iecx3"]
-script/source = "extends Area2D
-
-const NEXT_SCENE := \"res://Spaces/SpaceScenes/Level0/Rooms/full_no_clipble_front_wall_room.tscn\"
-
-func _on_body_entered(body: Node2D) -> void:
-	
-	if body.is_in_group(\"players\"):
-		
-		get_tree().change_scene_to_file(NEXT_SCENE)
-"
+[ext_resource type="Script" uid="uid://cbiiulpl780gs" path="res://Spaces/SpaceScenes/Level0/Rooms/left_door_listener.gd" id="5_ipp2t"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dw882"]
 size = Vector2(80, 172)
 
 [node name="Level0start" type="Node2D" unique_id=1517996660]
-script = SubResource("GDScript_iecx3")
 
 [node name="Floor" type="Sprite2D" parent="." unique_id=1715278020]
 position = Vector2(576.5, 325.5)
@@ -63,3 +50,5 @@ script = ExtResource("5_ipp2t")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="leftDoorListener" unique_id=922564251]
 position = Vector2(-32, 381)
 shape = SubResource("RectangleShape2D_dw882")
+
+[connection signal="body_entered" from="leftDoorListener" to="leftDoorListener" method="_on_body_entered"]

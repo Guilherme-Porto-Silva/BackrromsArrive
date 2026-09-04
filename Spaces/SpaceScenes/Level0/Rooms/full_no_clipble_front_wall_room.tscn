@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://dyu4mjdem4o2" path="res://Spaces/SpaceScenes/Level0/Components/nullZones/moist_left_null_zone_right_level_0_wall.tscn" id="2_g85lf"]
 [ext_resource type="PackedScene" uid="uid://sewjfvrismom" path="res://Spaces/SpaceScenes/Level0/Components/frontways_level_0_wall.tscn" id="3_0qqme"]
 [ext_resource type="PackedScene" uid="uid://srqtrqr4x6p1" path="res://Spaces/SpaceScenes/Level0/Components/moist/left_moist_level_0_wall.tscn" id="4_a3a6e"]
+[ext_resource type="PackedScene" uid="uid://bnnw1fuslexmr" path="res://Characters/CharacterScenes/Guigui-chan.tscn" id="5_g85lf"]
 
 [node name="fullNoClipbleFrontWallRoom" type="Node2D" unique_id=1175133351]
 
@@ -13,10 +14,13 @@ scale = Vector2(0.5758483, 0.3258483)
 texture = ExtResource("1_8qu7m")
 
 [node name="moistLeftNullZoneRightLevel0wall" parent="." unique_id=967988161 instance=ExtResource("2_g85lf")]
-position = Vector2(262, 102)
+position = Vector2(261, 85)
 
 [node name="FrontwaysLevel0wall" parent="." unique_id=783276937 instance=ExtResource("3_0qqme")]
 position = Vector2(692.99994, 92.99999)
 
 [node name="LeftMoistLevel0wall" parent="." unique_id=1185216262 instance=ExtResource("4_a3a6e")]
-position = Vector2(1145, 116)
+position = Vector2(1146, 72)
+
+[node name="Guigui-chan" parent="." unique_id=656459508 instance=ExtResource("5_g85lf")]
+position = Vector2(1146, 374)

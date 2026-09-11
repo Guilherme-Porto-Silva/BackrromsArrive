@@ -1,18 +1,113 @@
 [gd_scene format=3 uid="uid://bnnw1fuslexmr"]
 
-[ext_resource type="Texture2D" uid="uid://b52n2ow7faka5" path="res://Characters/CharacterImages/Guigui-chan/Guigui-chanIcon.png" id="1_0xv4h"]
 [ext_resource type="Script" uid="uid://ccjflj07bfnax" path="res://Characters/CharacterScripts/Guigui-chan.gd" id="1_mf7wv"]
+[ext_resource type="Texture2D" uid="uid://bvnbscyspsn1e" path="res://Characters/CharacterImages/Guigui-chan/Guigui-chanSpriteSheet.png" id="2_4bh7t"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dw882"]
-size = Vector2(186.66666, 152)
+size = Vector2(119, 123.00003)
+
+[sub_resource type="Animation" id="Animation_4bh7t"]
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+
+[sub_resource type="Animation" id="Animation_kogf2"]
+resource_name = "ascent"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.033333335, 0.06666667, 0.10000001, 0.13333334, 0.16666667, 0.20000002, 0.23333335, 0.26666668, 0.3, 0.33333334, 0.36666667, 0.40000004, 0.43333337, 0.4666667, 0.5, 0.53333336, 0.5666667, 0.6, 0.6333334, 0.6666667, 0.70000005, 0.73333335, 0.7666667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [10, 9, 10, 11, 10, 9, 10, 11, 10, 9, 10, 11, 10, 9, 10, 11, 10, 9, 10, 11, 10, 9, 10]
+}
+
+[sub_resource type="Animation" id="Animation_lrxj4"]
+resource_name = "descend"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.033333335, 0.06666667, 0.10000001, 0.13333334, 0.16666667, 0.20000002, 0.23333335, 0.26666668, 0.3, 0.33333334, 0.36666667, 0.40000004, 0.43333337, 0.4666667, 0.5, 0.53333336, 0.5666667, 0.6, 0.6333334, 0.6666667, 0.70000005, 0.73333335, 0.7666667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [1, 0, 1, 2, 1, 0, 1, 2, 1, 0, 1, 2, 1, 1, 2, 1, 0, 1, 2, 1, 0, 1, 2, 1]
+}
+
+[sub_resource type="Animation" id="Animation_bkfse"]
+resource_name = "leftways"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.033333335, 0.06666667, 0.10000001, 0.13333334, 0.16666667, 0.20000002, 0.23333335, 0.26666668, 0.3, 0.33333334, 0.36666667, 0.40000004, 0.43333337, 0.4666667, 0.5, 0.53333336, 0.5666667, 0.6, 0.6333334, 0.6666667, 0.70000005, 0.73333335, 0.7666667, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [7, 6, 7, 5, 7, 6, 5, 7, 6, 5, 7, 6, 5, 7, 6, 5, 7, 6, 5, 7, 6, 5, 7, 6, 7]
+}
+
+[sub_resource type="Animation" id="Animation_wf4bo"]
+resource_name = "rightways"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.033333335, 0.06666667, 0.10000001, 0.13333334, 0.16666667, 0.20000002, 0.23333335, 0.26666668, 0.3, 0.33333334, 0.36666667, 0.40000004, 0.43333337, 0.4666667, 0.5, 0.53333336, 0.5666667, 0.6, 0.6333334, 0.6666667, 0.70000005, 0.73333335, 0.7666667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [4, 3, 8, 4, 3, 8, 4, 3, 8, 4, 3, 8, 4, 3, 8, 4, 3, 8, 4, 3, 8, 4, 3, 8]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_kogf2"]
+_data = {
+&"RESET": SubResource("Animation_4bh7t"),
+&"ascent": SubResource("Animation_kogf2"),
+&"descend": SubResource("Animation_lrxj4"),
+&"leftways": SubResource("Animation_bkfse"),
+&"rightways": SubResource("Animation_wf4bo")
+}
 
 [node name="Guigui-chan" type="CharacterBody2D" unique_id=656459508]
-scale = Vector2(0.3, 0.3)
 script = ExtResource("1_mf7wv")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=317752793]
-texture = ExtResource("1_0xv4h")
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1940624451]
-position = Vector2(19.999992, 216)
+position = Vector2(-0.5, -62.499985)
 shape = SubResource("RectangleShape2D_dw882")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=317752793]
+position = Vector2(3, -183)
+texture = ExtResource("2_4bh7t")
+hframes = 3
+vframes = 4
+frame = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=842364194]
+libraries/ = SubResource("AnimationLibrary_kogf2")

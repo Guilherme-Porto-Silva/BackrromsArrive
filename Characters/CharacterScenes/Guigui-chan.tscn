@@ -71,6 +71,74 @@ tracks/0/keys = {
 "values": [7, 6, 7, 5, 7, 6, 5, 7, 6, 5, 7, 6, 5, 7, 6, 5, 7, 6, 5, 7, 6, 5, 7, 6, 7]
 }
 
+[sub_resource type="Animation" id="Animation_dmj6p"]
+resource_name = "look_away"
+length = 0.1
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [9]
+}
+
+[sub_resource type="Animation" id="Animation_nbnpl"]
+resource_name = "look_forward"
+length = 0.1
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_wurjw"]
+resource_name = "look_leftways"
+length = 0.1
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [6]
+}
+
+[sub_resource type="Animation" id="Animation_f7tuh"]
+resource_name = "look_rightways"
+length = 0.1
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [3]
+}
+
 [sub_resource type="Animation" id="Animation_wf4bo"]
 resource_name = "rightways"
 tracks/0/type = "value"
@@ -92,11 +160,77 @@ _data = {
 &"ascent": SubResource("Animation_kogf2"),
 &"descend": SubResource("Animation_lrxj4"),
 &"leftways": SubResource("Animation_bkfse"),
+&"look_away": SubResource("Animation_dmj6p"),
+&"look_forward": SubResource("Animation_nbnpl"),
+&"look_leftways": SubResource("Animation_wurjw"),
+&"look_rightways": SubResource("Animation_f7tuh"),
 &"rightways": SubResource("Animation_wf4bo")
 }
 
-[node name="Guigui-chan" type="CharacterBody2D" unique_id=656459508]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_wf4bo"]
+animation = &"look_forward"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_dmj6p"]
+animation = &"look_away"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_nbnpl"]
+animation = &"look_leftways"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_wurjw"]
+animation = &"look_rightways"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_f7tuh"]
+blend_mode = 1
+blend_point_0/node = SubResource("AnimationNodeAnimation_wf4bo")
+blend_point_0/pos = Vector2(0, 1)
+blend_point_0/name = &"look_forward"
+blend_point_1/node = SubResource("AnimationNodeAnimation_dmj6p")
+blend_point_1/pos = Vector2(0, -1)
+blend_point_1/name = &"look_away"
+blend_point_2/node = SubResource("AnimationNodeAnimation_nbnpl")
+blend_point_2/pos = Vector2(-1, 0)
+blend_point_2/name = &"look_leftways"
+blend_point_3/node = SubResource("AnimationNodeAnimation_wurjw")
+blend_point_3/pos = Vector2(1, 0)
+blend_point_3/name = &"look_rightways"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_4bh7t"]
+animation = &"leftways"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_lrxj4"]
+animation = &"rightways"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_kogf2"]
+animation = &"descend"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_bkfse"]
+animation = &"ascent"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_wf4bo"]
+blend_mode = 1
+blend_point_0/node = SubResource("AnimationNodeAnimation_4bh7t")
+blend_point_0/pos = Vector2(-1, 0)
+blend_point_0/name = &"leftways"
+blend_point_1/node = SubResource("AnimationNodeAnimation_lrxj4")
+blend_point_1/pos = Vector2(1, 0)
+blend_point_1/name = &"rightways"
+blend_point_2/node = SubResource("AnimationNodeAnimation_kogf2")
+blend_point_2/pos = Vector2(0, 1)
+blend_point_2/name = &"descend"
+blend_point_3/node = SubResource("AnimationNodeAnimation_bkfse")
+blend_point_3/pos = Vector2(0, -1)
+blend_point_3/name = &"ascent"
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_dw882"]
+states/IdleBlendSpace2D/node = SubResource("AnimationNodeBlendSpace2D_f7tuh")
+states/IdleBlendSpace2D/position = Vector2(370, 100)
+states/WalkingBlendSpace2D/node = SubResource("AnimationNodeBlendSpace2D_wf4bo")
+states/WalkingBlendSpace2D/position = Vector2(602, 99)
+
+[node name="Guigui-chan" type="CharacterBody2D" unique_id=656459508 node_paths=PackedStringArray("animations")]
+scale = Vector2(0.5, 0.5)
 script = ExtResource("1_mf7wv")
+animations = NodePath("Guigui-chanAnimationTree")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1940624451]
 position = Vector2(-0.5, -62.499985)
@@ -109,5 +243,11 @@ hframes = 3
 vframes = 4
 frame = 1
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=842364194]
+[node name="Guigui-chanAnimations" type="AnimationPlayer" parent="." unique_id=842364194]
 libraries/ = SubResource("AnimationLibrary_kogf2")
+
+[node name="Guigui-chanAnimationTree" type="AnimationTree" parent="." unique_id=914747680]
+tree_root = SubResource("AnimationNodeStateMachine_dw882")
+anim_player = NodePath("../Guigui-chanAnimations")
+parameters/IdleBlendSpace2D/blend_position = Vector2(0, 0)
+parameters/WalkingBlendSpace2D/blend_position = Vector2(0, 0)

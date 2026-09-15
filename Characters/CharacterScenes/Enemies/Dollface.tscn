@@ -15,3 +15,13 @@ texture = ExtResource("1_123bn")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1179020819]
 position = Vector2(3, 0.5)
 shape = SubResource("RectangleShape2D_dw882")
+
+[node name="Vision" type="Area2D" parent="." unique_id=2145187204]
+
+[node name="Attack" type="Area2D" parent="." unique_id=26307485]
+
+[node name="AttackTimer" type="Timer" parent="." unique_id=999068092]
+
+[connection signal="body_entered" from="Vision" to="." method="saw_player"]
+[connection signal="body_exited" from="Vision" to="." method="lost_player"]
+[connection signal="body_entered" from="Attack" to="." method="punch_player"]

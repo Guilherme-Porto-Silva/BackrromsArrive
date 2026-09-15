@@ -2,6 +2,8 @@ extends Enemy
 
 func _ready() -> void:
 	
-	speed = 500.0
+	super._ready()
 	
-	damege = 11
+	speed = 300.0
+	
+	damege = 10

@@ -68,10 +68,10 @@ func animate() -> void:
 func _physics_process(delta: float) -> void:
 
 	move()
-
-	move_and_slide()
 	
 	animate()
+
+	move_and_slide()
 
 
 
@@ -101,15 +101,11 @@ func heal(heal_amount: int) -> void:
 
 
 
-func damege(damege_amount: int) -> void:
+func damage(damage_amount: int) -> void:
 	
-	current_hp -= damege_amount
+	current_hp -= damage_amount
 	
-	if current_hp < 0:
-		
-		current_hp = 0
-	
-	if current_hp == 0:
+	if current_hp <= 0:
 		
 		die()
 

@@ -2,6 +2,27 @@ extends Enemy
 
 func _ready() -> void:
 	
-	speed = 500.0
+	speed = 150.0
 	
-	damege = 6
+	damage = 5
+
+
+func saw_player(body: Node2D) -> void:
+	
+	if body.is_in_group("players"):
+		
+		player = body
+
+
+func lost_player(body: Node2D) -> void:
+	
+	if body == player:
+		
+		player = null
+
+
+func punch_player(body: Node2D) -> void:
+	
+	if body == player:
+		
+		attack_player()

@@ -3,25 +3,38 @@
 [ext_resource type="Script" uid="uid://d30iydjbdqun7" path="res://Characters/CharacterScripts/Enemies/Dollface.gd" id="1_23g5u"]
 [ext_resource type="Texture2D" uid="uid://dly7ngv8yqcp0" path="res://Characters/CharacterImages/Enemies/Dollface.png" id="1_123bn"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_86ap7"]
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dw882"]
 size = Vector2(92, 185)
 
-[node name="Dollface" type="CharacterBody2D" unique_id=1084668826]
+[node name="Dollface" type="CharacterBody2D" unique_id=1084668826 groups=["enemies"]]
 script = ExtResource("1_23g5u")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1392284717]
-texture = ExtResource("1_123bn")
+[node name="AttackArea" type="Area2D" parent="." unique_id=26307485]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1179020819]
-position = Vector2(3, 0.5)
+[node name="AttackCollision" type="CollisionShape2D" parent="AttackArea" unique_id=1089466696]
+scale = Vector2(8, 12)
+shape = SubResource("RectangleShape2D_86ap7")
+
+[node name="FisicalCollision" type="CollisionShape2D" parent="." unique_id=1179020819]
+position = Vector2(3, 0)
 shape = SubResource("RectangleShape2D_dw882")
 
-[node name="Vision" type="Area2D" parent="." unique_id=2145187204]
+[node name="DollfaceVisionArea" type="Area2D" parent="." unique_id=2145187204]
 
-[node name="Attack" type="Area2D" parent="." unique_id=26307485]
+[node name="VisionCollision" type="CollisionPolygon2D" parent="DollfaceVisionArea" unique_id=982845380]
+polygon = PackedVector2Array(23, -49, 1151, -912, 1149, 646)
 
 [node name="AttackTimer" type="Timer" parent="." unique_id=999068092]
 
-[connection signal="body_entered" from="Vision" to="." method="saw_player"]
-[connection signal="body_exited" from="Vision" to="." method="lost_player"]
-[connection signal="body_entered" from="Attack" to="." method="punch_player"]
+[node name="DollfaceSprite" type="Sprite2D" parent="." unique_id=1392284717]
+texture = ExtResource("1_123bn")
+
+[node name="DollfaceRayCast2D" type="RayCast2D" parent="." unique_id=885312542]
+position = Vector2(46, -49)
+target_position = Vector2(1103, -857)
+
+[connection signal="body_entered" from="AttackArea" to="." method="punch_player"]
+[connection signal="body_entered" from="DollfaceVisionArea" to="." method="saw_player"]
+[connection signal="body_exited" from="DollfaceVisionArea" to="." method="lost_player"]

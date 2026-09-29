@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://sewjfvrismom" path="res://Spaces/SpaceScenes/Level0/Components/frontways_level_0_wall.tscn" id="3_c6g2w"]
 [ext_resource type="PackedScene" uid="uid://umokqs2di0ue" path="res://Spaces/SpaceScenes/Level0/Components/sideways_level_0_wall.tscn" id="4_ipp2t"]
 [ext_resource type="Script" uid="uid://cbiiulpl780gs" path="res://Spaces/SpaceScenes/Level0/Rooms/left_door_listener.gd" id="5_ipp2t"]
+[ext_resource type="PackedScene" uid="uid://d0y1areqq3jn1" path="res://Characters/CharacterScenes/Enemies/Dollface.tscn" id="6_iecx3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dw882"]
 size = Vector2(80, 172)
@@ -16,7 +17,7 @@ position = Vector2(576.5, 325.5)
 scale = Vector2(0.57435125, 0.3228543)
 texture = ExtResource("1_portu")
 
-[node name="Guigui-chan" parent="." unique_id=656459508 groups=["players"] instance=ExtResource("2_c6g2w")]
+[node name="Guigui-chan" parent="." unique_id=656459508 instance=ExtResource("2_c6g2w")]
 z_index = 1
 position = Vector2(551, 355)
 
@@ -50,5 +51,8 @@ script = ExtResource("5_ipp2t")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="leftDoorListener" unique_id=922564251]
 position = Vector2(-32, 381)
 shape = SubResource("RectangleShape2D_dw882")
+
+[node name="Dollface" parent="." unique_id=1084668826 instance=ExtResource("6_iecx3")]
+position = Vector2(503, 483)
 
 [connection signal="body_entered" from="leftDoorListener" to="leftDoorListener" method="_on_body_entered"]

@@ -4,6 +4,8 @@ func _ready() -> void:
 	
 	super._ready()
 	
-	speed = 300.0
+	speed = 300
 	
-	damege = 10
+	damage = 10
+	
+	timer_ataque = $SmilerAttackTimer

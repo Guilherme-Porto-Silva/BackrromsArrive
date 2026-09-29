@@ -2,15 +2,17 @@ class_name Enemy
 
 extends CharacterBody2D
 
-var speed = 300.0
+var speed: int
 
 var damage: int
 
-var player: Node2D
+var attack_cooldown: int
 
-@export var turn_speed: float
+var player: CharacterBody2D
 
-@onready var timer_ataque: Timer = $AttackTimer
+var turn_speed: int
+
+var timer_ataque: Timer
 
 @onready var vision_area: Area2D
 
@@ -22,6 +24,8 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	
+	print("Valor do knows_player_position: ", knows_player_position)
+	
 	if knows_player_position:
 		
 		var direction = global_position.direction_to(player.global_position)
@@ -32,6 +36,8 @@ func _physics_process(delta: float) -> void:
 		
 	else:
 		velocity = Vector2.ZERO# ficar parado
+	
+	rotate_sprite()
 	
 	move_and_slide()
 
@@ -48,3 +54,11 @@ func attack_player():
 func rotate_vision(player_position: Vector2, delta: float) -> void:
 	
 	var target_angle = (player_position - global_position).angle()
+	
+	print(target_angle)
+	
+	rotation = target_angle
+
+func rotate_sprite():
+	
+	pass

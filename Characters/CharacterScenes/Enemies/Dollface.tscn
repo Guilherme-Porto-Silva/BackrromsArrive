@@ -8,6 +8,42 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dw882"]
 size = Vector2(92, 185)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_g6rry"]
+atlas = ExtResource("1_123bn")
+region = Rect2(0, 0, 144, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fvd7d"]
+atlas = ExtResource("1_123bn")
+region = Rect2(144, 0, 144, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1o4us"]
+atlas = ExtResource("1_123bn")
+region = Rect2(0, 0, 144, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1hv1h"]
+atlas = ExtResource("1_123bn")
+region = Rect2(288, 0, 144, 144)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_86ap7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g6rry")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fvd7d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1o4us")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1hv1h")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
 [node name="Dollface" type="CharacterBody2D" unique_id=1084668826 groups=["enemies"]]
 script = ExtResource("1_23g5u")
 
@@ -24,16 +60,22 @@ shape = SubResource("RectangleShape2D_dw882")
 [node name="DollfaceVisionArea" type="Area2D" parent="." unique_id=2145187204]
 
 [node name="VisionCollision" type="CollisionPolygon2D" parent="DollfaceVisionArea" unique_id=982845380]
+position = Vector2(-20, 50)
 polygon = PackedVector2Array(23, -49, 1151, -912, 1149, 646)
 
-[node name="AttackTimer" type="Timer" parent="." unique_id=999068092]
+[node name="DollfaceAttackTimer" type="Timer" parent="." unique_id=999068092]
 
 [node name="DollfaceSprite" type="Sprite2D" parent="." unique_id=1392284717]
+visible = false
 texture = ExtResource("1_123bn")
 
 [node name="DollfaceRayCast2D" type="RayCast2D" parent="." unique_id=885312542]
 position = Vector2(46, -49)
 target_position = Vector2(1103, -857)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1809823084]
+sprite_frames = SubResource("SpriteFrames_86ap7")
+frame_progress = 0.33141914
 
 [connection signal="body_entered" from="AttackArea" to="." method="punch_player"]
 [connection signal="body_entered" from="DollfaceVisionArea" to="." method="saw_player"]

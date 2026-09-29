@@ -251,3 +251,5 @@ tree_root = SubResource("AnimationNodeStateMachine_dw882")
 anim_player = NodePath("../Guigui-chanAnimations")
 parameters/IdleBlendSpace2D/blend_position = Vector2(0, 0)
 parameters/WalkingBlendSpace2D/blend_position = Vector2(0, 0)
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=776049361 groups=["players"]]

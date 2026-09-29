@@ -1,19 +1,15 @@
 extends Enemy
 
-
-
 func _ready() -> void:
 	
 	super._ready()
 	
-	var speed = 250.0
+	speed = 250
 	
-	var damege: int = 20
+	damage = 20
 	
 	attack_cooldown = 5
-
-
-
-func _physics_process(delta: float) -> void:
-
-	move_and_slide()
+	
+	turn_speed = 5
+	
+	timer_ataque = $HoundAttackTimer

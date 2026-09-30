@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dkqqeq2at1lru"]
 
 [ext_resource type="Texture2D" uid="uid://cvejwopeqka4h" path="res://Spaces/SpaceImages/Level0/gray-carpet.jpg" id="1_portu"]
-[ext_resource type="PackedScene" uid="uid://bnnw1fuslexmr" path="res://Characters/CharacterScenes/Guigui-chan.tscn" id="2_c6g2w"]
+[ext_resource type="PackedScene" uid="uid://bnnw1fuslexmr" path="res://Characters/CharacterScenes/Player.tscn" id="2_c6g2w"]
 [ext_resource type="PackedScene" uid="uid://sewjfvrismom" path="res://Spaces/SpaceScenes/Level0/Components/frontways_level_0_wall.tscn" id="3_c6g2w"]
 [ext_resource type="PackedScene" uid="uid://umokqs2di0ue" path="res://Spaces/SpaceScenes/Level0/Components/sideways_level_0_wall.tscn" id="4_ipp2t"]
 [ext_resource type="Script" uid="uid://cbiiulpl780gs" path="res://Spaces/SpaceScenes/Level0/Rooms/left_door_listener.gd" id="5_ipp2t"]
@@ -53,6 +53,6 @@ position = Vector2(-32, 381)
 shape = SubResource("RectangleShape2D_dw882")
 
 [node name="Dollface" parent="." unique_id=1084668826 instance=ExtResource("6_iecx3")]
-position = Vector2(503, 483)
+position = Vector2(430, 477)
 
 [connection signal="body_entered" from="leftDoorListener" to="leftDoorListener" method="_on_body_entered"]

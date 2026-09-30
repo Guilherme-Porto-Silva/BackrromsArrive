@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bnnw1fuslexmr"]
 
-[ext_resource type="Script" uid="uid://ccjflj07bfnax" path="res://Characters/CharacterScripts/Guigui-chan.gd" id="1_mf7wv"]
+[ext_resource type="Script" uid="uid://ccjflj07bfnax" path="res://Characters/CharacterScripts/player.gd" id="1_dw3x8"]
 [ext_resource type="Texture2D" uid="uid://bvnbscyspsn1e" path="res://Characters/CharacterImages/Guigui-chan/Guigui-chanSpriteSheet.png" id="2_4bh7t"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dw882"]
@@ -12,7 +12,7 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/path = NodePath("PlayerSprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -28,7 +28,7 @@ length = 0.8
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/path = NodePath("PlayerSprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -45,7 +45,7 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/path = NodePath("PlayerSprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -61,7 +61,7 @@ length = 0.8
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/path = NodePath("PlayerSprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -78,7 +78,7 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/path = NodePath("PlayerSprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -95,7 +95,7 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/path = NodePath("PlayerSprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -112,7 +112,7 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/path = NodePath("PlayerSprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -129,7 +129,7 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/path = NodePath("PlayerSprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -144,7 +144,7 @@ resource_name = "rightways"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/path = NodePath("PlayerSprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -227,28 +227,28 @@ states/IdleBlendSpace2D/position = Vector2(370, 100)
 states/WalkingBlendSpace2D/node = SubResource("AnimationNodeBlendSpace2D_wf4bo")
 states/WalkingBlendSpace2D/position = Vector2(602, 99)
 
-[node name="Guigui-chan" type="CharacterBody2D" unique_id=656459508 node_paths=PackedStringArray("animations") groups=["players"]]
+[node name="Player" type="CharacterBody2D" unique_id=656459508 node_paths=PackedStringArray("animations") groups=["players"]]
 scale = Vector2(0.5, 0.5)
-script = ExtResource("1_mf7wv")
-animations = NodePath("Guigui-chanAnimationTree")
+script = ExtResource("1_dw3x8")
+animations = NodePath("PlayerAnimationTree")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1940624451]
 position = Vector2(-0.5, -62.499985)
 shape = SubResource("RectangleShape2D_dw882")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=317752793]
+[node name="PlayerSprite" type="Sprite2D" parent="." unique_id=317752793]
 position = Vector2(3, -183)
 texture = ExtResource("2_4bh7t")
 hframes = 3
 vframes = 4
 frame = 1
 
-[node name="Guigui-chanAnimations" type="AnimationPlayer" parent="." unique_id=842364194]
+[node name="PlayerAnimations" type="AnimationPlayer" parent="." unique_id=842364194]
 libraries/ = SubResource("AnimationLibrary_kogf2")
 
-[node name="Guigui-chanAnimationTree" type="AnimationTree" parent="." unique_id=914747680]
+[node name="PlayerAnimationTree" type="AnimationTree" parent="." unique_id=914747680]
 tree_root = SubResource("AnimationNodeStateMachine_dw882")
-anim_player = NodePath("../Guigui-chanAnimations")
+anim_player = NodePath("../PlayerAnimations")
 parameters/IdleBlendSpace2D/blend_position = Vector2(0, 0)
 parameters/WalkingBlendSpace2D/blend_position = Vector2(0, 0)
 

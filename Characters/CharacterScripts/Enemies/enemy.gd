@@ -18,26 +18,30 @@ var timer_ataque: Timer
 
 var knows_player_position: bool
 
+func shoot_ray_cast() -> void:
+	
+	pass
+
 func _ready() -> void:
 	
-	knows_player_position = false
-
-func _physics_process(delta: float) -> void:
+	knows_player_position = true
 	
-	print("Valor do knows_player_position: ", knows_player_position)
+	player = $"."
+
+func _physics_process(_delta: float) -> void:
 	
 	if knows_player_position:
 		
-		var direction = global_position.direction_to(player.global_position)
+		var direction = global_position.direction_to(player.position)
 		
 		velocity = direction * speed
 		
-		rotate_vision(player.global_position, delta)
+		rotate_vision(player.position)
+		
+		shoot_ray_cast()
 		
 	else:
 		velocity = Vector2.ZERO# ficar parado
-	
-	rotate_sprite()
 	
 	move_and_slide()
 
@@ -51,14 +55,10 @@ func attack_player():
 			
 			timer_ataque.start()
 
-func rotate_vision(player_position: Vector2, delta: float) -> void:
+func rotate_vision(player_position: Vector2) -> void:
 	
 	var target_angle = (player_position - global_position).angle()
 	
 	print(target_angle)
 	
 	rotation = target_angle
-
-func rotate_sprite():
-	
-	pass

@@ -1,16 +1,16 @@
-class_name PlaybleCharacter
-
 extends CharacterBody2D
 
-const SPEED = 300.0
+const SPEED = 300
 
-const full_hp: int = 100
+const full_hp = 100
 
 var current_hp: int
 
 @onready var hp_bar = $"../CanvasLayer/hp_bar"
 
 @onready var hp_bar_background = $"../CanvasLayer/hp_bar_background"
+
+@onready var player_sprite = $PlayerSprite
 
 # A anotação @export diz, para a Godot:
 
@@ -65,7 +65,7 @@ func animate() -> void:
 
 
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 
 	move()
 	
@@ -77,7 +77,7 @@ func _physics_process(delta: float) -> void:
 
 func chose_sprite() -> void:
 	
-	pass
+	player_sprite.texture = load("res://Characters/CharacterImages/Guigui-chan/Guigui-chanSpriteSheet.png")
 
 
 

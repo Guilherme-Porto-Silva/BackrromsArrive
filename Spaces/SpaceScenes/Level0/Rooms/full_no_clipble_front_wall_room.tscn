@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://dyu4mjdem4o2" path="res://Spaces/SpaceScenes/Level0/Components/nullZones/moist_left_null_zone_right_level_0_wall.tscn" id="2_g85lf"]
 [ext_resource type="PackedScene" uid="uid://sewjfvrismom" path="res://Spaces/SpaceScenes/Level0/Components/frontways_level_0_wall.tscn" id="3_0qqme"]
 [ext_resource type="PackedScene" uid="uid://srqtrqr4x6p1" path="res://Spaces/SpaceScenes/Level0/Components/moist/left_moist_level_0_wall.tscn" id="4_a3a6e"]
-[ext_resource type="PackedScene" uid="uid://bnnw1fuslexmr" path="res://Characters/CharacterScenes/Guigui-chan.tscn" id="5_g85lf"]
+[ext_resource type="PackedScene" uid="uid://bnnw1fuslexmr" path="res://Characters/CharacterScenes/Player.tscn" id="5_g85lf"]
 
 [node name="fullNoClipbleFrontWallRoom" type="Node2D" unique_id=1175133351]
 

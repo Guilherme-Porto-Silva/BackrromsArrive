@@ -3,10 +3,11 @@
 [ext_resource type="Script" uid="uid://d30iydjbdqun7" path="res://Characters/CharacterScripts/Enemies/Dollface.gd" id="1_23g5u"]
 [ext_resource type="Texture2D" uid="uid://dly7ngv8yqcp0" path="res://Characters/CharacterImages/Enemies/Dollface.png" id="1_123bn"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_86ap7"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_dw3x8"]
+radius = 40.549355
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_dw882"]
-size = Vector2(92, 185)
+[sub_resource type="CircleShape2D" id="CircleShape2D_g6rry"]
+radius = 28.504385
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_g6rry"]
 atlas = ExtResource("1_123bn")
@@ -50,18 +51,18 @@ script = ExtResource("1_23g5u")
 [node name="AttackArea" type="Area2D" parent="." unique_id=26307485]
 
 [node name="AttackCollision" type="CollisionShape2D" parent="AttackArea" unique_id=1089466696]
-scale = Vector2(8, 12)
-shape = SubResource("RectangleShape2D_86ap7")
+position = Vector2(4.5, 41)
+shape = SubResource("CircleShape2D_dw3x8")
 
 [node name="FisicalCollision" type="CollisionShape2D" parent="." unique_id=1179020819]
-position = Vector2(3, 0)
-shape = SubResource("RectangleShape2D_dw882")
+position = Vector2(4.5, 43.5)
+shape = SubResource("CircleShape2D_g6rry")
 
 [node name="DollfaceVisionArea" type="Area2D" parent="." unique_id=2145187204]
 
 [node name="VisionCollision" type="CollisionPolygon2D" parent="DollfaceVisionArea" unique_id=982845380]
 position = Vector2(-20, 50)
-polygon = PackedVector2Array(23, -49, 1151, -912, 1149, 646)
+polygon = PackedVector2Array(23, -49, 463, -373, 463, 240)
 
 [node name="DollfaceAttackTimer" type="Timer" parent="." unique_id=999068092]
 

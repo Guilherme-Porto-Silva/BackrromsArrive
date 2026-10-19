@@ -1,120 +1,156 @@
-extends Enemy
+extends CharacterBody2D
+
+signal dollface_saw_player(detectado: bool)
+
+@export var speed: float = 150.0
+
+@export var damage: int = 5.0
+
+@export var turn_speed: float = 150.0
+
+@export var attack_cooldown: float = 15.0
+
+var player: CharacterBody2D = null
+
+var knows_player_position: bool = false
 
 @onready var ray_cast: RayCast2D = $DollfaceRayCast2D
 
 @onready var animated_sprite: AnimatedSprite2D = $DollfaceAnimatedSprite
 
-signal dollface_saw_player(detectado: bool)
+@onready var vision_area: Area2D = $DollfaceVisionArea
+
+@onready var timer_ataque: Timer = $DollfaceAttackTimer
 
 
 
 func _ready() -> void:
 	
-	super._ready()
-	
-	speed = 150
-	
-	damage = 5
-	
-	turn_speed = 150
-	
-	vision_area = $DollfaceVisionArea
-	
-	attack_cooldown = 15
-	
-	timer_ataque = $DollfaceAttackTimer
+	dollface_saw_player.connect(_on_seeing_player)
 
 
 
 func _physics_process(_delta: float) -> void:
 	
-	super._physics_process(_delta)
+	if knows_player_position and is_instance_valid(player):
+		
+		var direction: Vector2 = global_position.direction_to(player.global_position)
+		
+		velocity = direction * speed
+		
+		rotate_vision(player.global_position)
+		
+		shoot_ray_cast()
+		
+	else:
+		velocity = Vector2.ZERO
+
+	move_and_slide()
 	
 	manege_rotation()
 
 
+
 func shoot_ray_cast() -> void:
 	
+	if not is_instance_valid(player):
+		
+		return
+
 	ray_cast.target_position = ray_cast.to_local(player.global_position)
 	
 	ray_cast.force_raycast_update()
-	
+
 	if ray_cast.is_colliding() and ray_cast.get_collider() == player:
 		
 		dollface_saw_player.emit(true)
 
 
 
-func saw_player(body) -> void:
+func saw_player(body: Node2D) -> void:
 	
 	if body.is_in_group("players"):
 		
-		player = body# é por isso que player == body quando punch_player e attack_player são chamados
+		player = body as CharacterBody2D
 		
 		shoot_ray_cast()
 
 
 
-func lost_player(body) -> void:
+func lost_player(body: Node2D) -> void:
 	
 	if body == player:
-			
+		
 		knows_player_position = false
 
 
 
-func punch_player(body) -> void:
+func punch_player(body: Node2D) -> void:
 	
-	if body == player:# para a função não ser chamada atoa
+	if body == player:
 		
 		attack_player()
 
 
 
-func change_animation(animation) -> void:
+func attack_player() -> void:
 	
-	animated_sprite.animation = animation
+	if is_instance_valid(player) and timer_ataque.is_stopped():
+		
+		if player.has_method("damage"):
+			
+			player.damage(damage)
+			
+			timer_ataque.start(attack_cooldown)
+
+
+
+func rotate_vision(player_position: Vector2) -> void:
+	
+	rotation = (player_position - global_position).angle()
+
+
+
+func change_animation(animation: String) -> void:
+	
+	if animated_sprite.animation != animation:
+		
+		animated_sprite.animation = animation
 
 
 
 func manege_rotation() -> void:
 	
-	if rotation >= -45 && rotation >= 45:
-		
-		if knows_player_position:
-			
-			change_animation("walking_right")
-		
-		else:
-			
-			change_animation("idle_right")
+	var deg: float = wrapf(rotation_degrees, -180.0, 180.0)
 	
-	elif rotation < -45 && rotation > 135:
+	var state: String = "walking" if knows_player_position else "idle"
+
+	if deg >= -45.0 and deg < 45.0:
 		
-		if knows_player_position:
-			
-			change_animation("idle_up")
+		change_animation(state + "_right")
 		
-		else:
-			
-			change_animation("walking_up")
+	elif deg >= 45.0 and deg < 135.0:
+		
+		change_animation(state + "_down")
+		
+	elif deg >= -135.0 and deg < -45.0:
+		
+		change_animation(state + "_up")
+		
+	else:
+		
+		change_animation(state + "_left")
+
+
+
+func _on_seeing_player(detectado: bool) -> void:
 	
-	elif rotation >= -135 && rotation >= -245:
-		
-		if knows_player_position:
-			
-			change_animation("idle_left")
-		
-		else:
-			
-			change_animation("walking_left")
+	knows_player_position = detectado
 	
-	elif rotation > 45 && rotation < 135:
+	if detectado:
 		
-		if knows_player_position:
-			
-			change_animation("idle_down")
+		print("Detectei o player!")
 		
-		else:
-			
-			change_animation("walking_down")
+	else:
+		
+		print("Não detectei o player...")

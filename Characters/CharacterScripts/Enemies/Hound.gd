@@ -8,23 +8,46 @@ extends CharacterBody2D
 
 @export var attack_cooldown: float = 5.0
 
-var player: CharacterBody2D = null
+var player: CharacterBody2D
 
-var knows_player_position: bool = false
+var knows_player_position: bool
 
-@onready var timer_ataque: Timer = $HoundAttackTimer
+var timer_ataque: Timer
+
+var ray_cast: RayCast2D
+
+var animated_sprite: AnimatedSprite2D
+
+var vision_area: Area2D
+
+
+
+func _ready() -> void:
+	
+	knows_player_position = false
+	
+	player = $"res://Characters/CharacterScenes/Player.tscn"
+	
+	ray_cast = $HoundRayCast2D
+	
+	animated_sprite = $HoundAnimatedSprite
+	
+	vision_area = $HoundVisionArea
+	
+	timer_ataque = $HoundAttackTimer
 
 
 
 func _physics_process(_delta: float) -> void:
 	
-	if knows_player_position and is_instance_valid(player):
+	if knows_player_position:
 		
 		var direction: Vector2 = global_position.direction_to(player.global_position)
 		
 		velocity = direction * speed
 		
 		rotate_vision(player.global_position)
+		
 	else:
 		
 		velocity = Vector2.ZERO
@@ -35,23 +58,17 @@ func _physics_process(_delta: float) -> void:
 
 func saw_player(body: Node2D) -> void:
 	
-	if body.is_in_group("players"):
-		
-		player = body as CharacterBody2D
-		
-		knows_player_position = true
+	knows_player_position = body.is_in_group("players")
 
 
 
 func lost_player(body: Node2D) -> void:
 	
-	if body == player:
-		
-		knows_player_position = false
+	knows_player_position = !body.is_in_group("players")
 
 
 
-func punch_player(body: Node2D) -> void:
+func bite_player(body: Node2D) -> void:
 	
 	if body == player:
 		
@@ -61,13 +78,11 @@ func punch_player(body: Node2D) -> void:
 
 func attack_player() -> void:
 	
-	if is_instance_valid(player) and timer_ataque.is_stopped():
+	if timer_ataque.is_stopped():
 		
-		if player.has_method("damage"):
-			
-			player.damage(damage)
-			
-			timer_ataque.start(attack_cooldown)
+		player.damage(damage)
+		
+		timer_ataque.start(attack_cooldown)
 
 
 

@@ -12,6 +12,8 @@ var player: Player
 
 var knows_player_position: bool
 
+var seeing_player: bool
+
 var ray_cast: RayCast2D
 
 var animated_sprite: AnimatedSprite2D
@@ -25,6 +27,8 @@ var timer_ataque: Timer
 
 
 func _ready() -> void:
+	
+	seeing_player = false
 	
 	knows_player_position = false
 	
@@ -42,7 +46,9 @@ func _ready() -> void:
 
 func _physics_process(_delta: float) -> void:
 	
-	ray_cast.position = vision_colision.position
+	if seeing_player and not knows_player_position:
+		
+		shoot_ray_cast()
 	
 	if knows_player_position:
 		
@@ -51,8 +57,9 @@ func _physics_process(_delta: float) -> void:
 		velocity = direction * speed
 		
 		rotate_vision(player.global_position)
-		print("Eu sei aonde o jogador está!")
 		
+		print("Eu sei aonde o jogador está!")
+	
 	else:
 		
 		velocity = Vector2.ZERO
@@ -71,7 +78,16 @@ func desviar() -> void:
 
 func shoot_ray_cast() -> void:
 
-	ray_cast.target_position = ray_cast.to_local(player.global_position)
+	# O raio sai da ponta do cone de visão (1º vértice do polígono), em coordenadas
+	# globais, então, acompanha a rotação do cone.
+	ray_cast.global_position = vision_colision.to_global(vision_colision.polygon[0])
+	
+	# O alvo é o CENTRO do corpo do jogador, e não o global_position dele: a origem
+	# do jogador fica nos pés, ~0,5 px abaixo da caixa de colisão. Mirando nos pés,
+	# um raio vindo de baixo para cima para antes de encostar na caixa.
+	var player_center: Vector2 = player.get_node("CollisionShape2D").global_position
+	
+	ray_cast.target_position = ray_cast.to_local(player_center)
 	
 	ray_cast.force_raycast_update()
 	
@@ -89,9 +105,9 @@ func see(body: Node2D) -> void:
 	
 	if body.is_in_group("players"):
 		
-		print("PEGUEI A VISÃO!")
-		
 		player = body
+		
+		seeing_player = true
 		
 		shoot_ray_cast()
 
@@ -101,7 +117,7 @@ func lost_player(body: Node2D) -> void:
 	
 	if body == player:
 		
-		print("Perdi a visão...")
+		seeing_player = false
 		
 		knows_player_position = false
 
@@ -140,19 +156,19 @@ func change_animation(animation: String) -> void:
 func manege_rotation() -> void:
 	
 	var state: String = "walking" if knows_player_position else "idle"
-
+	
 	if vision_area.rotation_degrees >= -45 and vision_area.rotation_degrees < 45:
 		
 		change_animation(state + "_right")
-		
+	
 	elif vision_area.rotation_degrees <= -45 and vision_area.rotation_degrees > -135:
 		
 		change_animation(state + "_up")
-		
+	
 	elif vision_area.rotation_degrees >= 45 and vision_area.rotation_degrees <= 135:
 		
 		change_animation(state + "_down")
-		
+	
 	else:
 		
 		change_animation(state + "_left")

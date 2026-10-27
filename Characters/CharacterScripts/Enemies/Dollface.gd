@@ -1,16 +1,18 @@
 extends CharacterBody2D
 
-@export var speed = 150
+var speed = 150
 
-@export var damage = 5
+var damage = 5
 
-@export var turn_speed = 150
-
-@export var attack_cooldown = 15
+var attack_cooldown = 15
 
 var player: Player
 
+var seeing_player: bool
+
 var knows_player_position: bool
+
+var near: bool
 
 var ray_cast: RayCast2D
 
@@ -22,13 +24,17 @@ var vision_colision: CollisionPolygon2D
 
 var timer_ataque: Timer
 
+var colisao: CollisionShape2D
+
 
 
 func _ready() -> void:
 	
+	seeing_player = false
+	
 	knows_player_position = false
 	
-	ray_cast = $DollfaceRayCast2D
+	near = true
 	
 	animated_sprite = $DollfaceAnimatedSprite
 	
@@ -37,28 +43,35 @@ func _ready() -> void:
 	timer_ataque = $DollfaceAttackTimer
 	
 	vision_colision = $DollfaceVisionArea/VisionCollision
+	
+	colisao = $DollfaceFisicalCollision
+	
+	ray_cast = $DollfaceRayCast2D
+	
+	ray_cast.add_exception(self)
 
 
 
 func _physics_process(_delta: float) -> void:
 	
-	ray_cast.position = vision_colision.position
+	print("DOLLFACE: ", velocity)
 	
-	if knows_player_position:
+	update_ray_cast()
+	
+	if knows_player_position and near:
 		
 		var direction = global_position.direction_to(player.global_position)
 		
 		velocity = direction * speed
 		
 		rotate_vision(player.global_position)
-		print("Eu sei aonde o jogador está!")
 		
 	else:
 		
 		velocity = Vector2.ZERO
 	
 	manege_rotation()
-
+	
 	move_and_slide()
 
 
@@ -69,15 +82,17 @@ func desviar() -> void:
 
 
 
-func shoot_ray_cast() -> void:
-
-	ray_cast.target_position = ray_cast.to_local(player.global_position)
+func update_ray_cast() -> void:
+	
+	ray_cast.position = to_local(vision_colision.global_position)
 	
 	ray_cast.force_raycast_update()
 	
 	if ray_cast.is_colliding() and ray_cast.get_collider() == player:
 		
 		knows_player_position = true
+		
+		seeing_player = true
 	
 	else:
 		
@@ -89,11 +104,9 @@ func see(body: Node2D) -> void:
 	
 	if body.is_in_group("players"):
 		
-		print("PEGUEI A VISÃO!")
-		
 		player = body
 		
-		shoot_ray_cast()
+		ray_cast.target_position = ray_cast.to_local(body.global_position)
 
 
 
@@ -101,9 +114,11 @@ func lost_player(body: Node2D) -> void:
 	
 	if body == player:
 		
-		print("Perdi a visão...")
+		seeing_player = false
 		
-		knows_player_position = false
+		await get_tree().create_timer(2.0).timeout
+		
+		knows_player_position = seeing_player
 
 
 
@@ -119,7 +134,11 @@ func attack_player() -> void:
 
 func punch_player(body: Node2D) -> void:
 	
-	if body == player:
+	if body.is_in_group("players"):
+		
+		near = false
+		
+		player = body
 		
 		attack_player()
 
@@ -139,7 +158,21 @@ func change_animation(animation: String) -> void:
 
 func manege_rotation() -> void:
 	
+	if player != null:
+		
+		if player.global_position.y < global_position.y:
+		
+			z_index = 2
+		
+		else:
+			
+			z_index = 0
+	
 	var state: String = "walking" if knows_player_position else "idle"
+	
+	if near:
+		
+		state = "atacking"
 
 	if vision_area.rotation_degrees >= -45 and vision_area.rotation_degrees < 45:
 		
@@ -156,3 +189,10 @@ func manege_rotation() -> void:
 	else:
 		
 		change_animation(state + "_left")
+
+
+func afastou(body: Node2D) -> void:
+	
+	if body.is_in_group("players"):
+		
+		near = true

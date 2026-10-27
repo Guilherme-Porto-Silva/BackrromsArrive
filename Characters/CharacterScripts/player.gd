@@ -26,28 +26,17 @@ var state_machine
 
 func move() -> void:
 	
-	# Captura os dois eixos simultaneamente em um Vector2
-	var direction: Vector2 = Vector2(
-		Input.get_axis("walkLeft", "walkRight"),
-		Input.get_axis("walkFront", "walkBack")
-	)
+	var direction: Vector2 = Vector2(Input.get_axis("walkLeft", "walkRight"), Input.get_axis("walkFront", "walkBack"))
 
-	# Verifica se o personagem está tentando se mover
 	if direction != Vector2.ZERO:
 		
-		# Alimentar um BlendSpace2D com um Vector2 é a forma correta!
 		animations["parameters/WalkingBlendSpace2D/blend_position"] = direction
-		
-		# O .normalized() garante que andar na diagonal não seja mais rápido que andar reto
 		
 		velocity.x = direction.normalized().x * SPEED
 		
 		velocity.y = direction.normalized().y * SPEED
 		
-		# Retorno antecipado: se ele entrou aqui, a função acaba e ignora o código abaixo
 		return
-		
-	# Lógica de parada (só será lida se o direction for Vector2.ZERO)
 	
 	velocity.x = move_toward(velocity.x, 0, SPEED)
 	
@@ -68,6 +57,8 @@ func animate() -> void:
 
 
 func _physics_process(_delta: float) -> void:
+	
+	print("PLAYER: ", velocity)
 
 	move()
 	

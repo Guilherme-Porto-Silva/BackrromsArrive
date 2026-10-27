@@ -3,8 +3,8 @@
 [ext_resource type="Script" uid="uid://ccjflj07bfnax" path="res://Characters/CharacterScripts/player.gd" id="1_dw3x8"]
 [ext_resource type="Texture2D" uid="uid://bvnbscyspsn1e" path="res://Characters/CharacterImages/Guigui-chan/Guigui-chanSpriteSheet.png" id="2_4bh7t"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_dw882"]
-size = Vector2(119, 123.00003)
+[sub_resource type="CircleShape2D" id="CircleShape2D_dw3x8"]
+radius = 70.71421
 
 [sub_resource type="Animation" id="Animation_4bh7t"]
 length = 0.8
@@ -228,16 +228,17 @@ states/WalkingBlendSpace2D/node = SubResource("AnimationNodeBlendSpace2D_wf4bo")
 states/WalkingBlendSpace2D/position = Vector2(602, 99)
 
 [node name="Player" type="CharacterBody2D" unique_id=656459508 node_paths=PackedStringArray("animations") groups=["players"]]
+light_mask = 2
 scale = Vector2(0.5, 0.5)
+collision_mask = 0
 script = ExtResource("1_dw3x8")
 animations = NodePath("PlayerAnimationTree")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1940624451]
-position = Vector2(-0.5, -62.499985)
-shape = SubResource("RectangleShape2D_dw882")
+shape = SubResource("CircleShape2D_dw3x8")
 
 [node name="PlayerSprite" type="Sprite2D" parent="." unique_id=317752793]
-position = Vector2(3, -183)
+position = Vector2(-30, -140)
 texture = ExtResource("2_4bh7t")
 hframes = 3
 vframes = 4

@@ -17,10 +17,6 @@ position = Vector2(576.5, 325.5)
 scale = Vector2(0.57435125, 0.3228543)
 texture = ExtResource("1_portu")
 
-[node name="Guigui-chan" parent="." unique_id=656459508 instance=ExtResource("2_c6g2w")]
-z_index = 1
-position = Vector2(551, 355)
-
 [node name="leftFrontwaysWall" parent="." unique_id=783276937 instance=ExtResource("3_c6g2w")]
 position = Vector2(244, 93)
 
@@ -53,6 +49,10 @@ position = Vector2(-32, 381)
 shape = SubResource("RectangleShape2D_dw882")
 
 [node name="Dollface" parent="." unique_id=1084668826 instance=ExtResource("6_iecx3")]
-position = Vector2(430, 477)
+position = Vector2(490, 407)
+
+[node name="Guigui-chan" parent="." unique_id=656459508 instance=ExtResource("2_c6g2w")]
+z_index = 1
+position = Vector2(415, 235)
 
 [connection signal="body_entered" from="leftDoorListener" to="leftDoorListener" method="_on_body_entered"]

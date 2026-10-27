@@ -6,8 +6,8 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_dw3x8"]
 radius = 40.549355
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_g6rry"]
-radius = 28.504385
+[sub_resource type="CircleShape2D" id="CircleShape2D_wdey1"]
+radius = 25.504902
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jqrv1"]
 atlas = ExtResource("1_123bn")
@@ -181,17 +181,19 @@ animations = [{
 }]
 
 [node name="Dollface" type="CharacterBody2D" unique_id=1084668826 groups=["enemies"]]
+collision_layer = 0
+collision_mask = 0
 script = ExtResource("1_23g5u")
 
-[node name="AttackArea" type="Area2D" parent="." unique_id=26307485]
+[node name="DollfaceAttackArea" type="Area2D" parent="." unique_id=26307485]
+position = Vector2(3, 49)
 
-[node name="AttackCollision" type="CollisionShape2D" parent="AttackArea" unique_id=1089466696]
-position = Vector2(4.5, 41)
+[node name="DollfaceAttackCollision" type="CollisionShape2D" parent="DollfaceAttackArea" unique_id=1089466696]
 shape = SubResource("CircleShape2D_dw3x8")
 
-[node name="FisicalCollision" type="CollisionShape2D" parent="." unique_id=1179020819]
-position = Vector2(4.5, 43.5)
-shape = SubResource("CircleShape2D_g6rry")
+[node name="DollfaceFisicalCollision" type="CollisionShape2D" parent="." unique_id=1179020819]
+position = Vector2(3, 49)
+shape = SubResource("CircleShape2D_wdey1")
 
 [node name="DollfaceVisionArea" type="Area2D" parent="." unique_id=2145187204]
 
@@ -214,6 +216,7 @@ sprite_frames = SubResource("SpriteFrames_86ap7")
 animation = &"walking_up"
 frame_progress = 0.90080297
 
-[connection signal="body_entered" from="AttackArea" to="." method="punch_player"]
+[connection signal="body_entered" from="DollfaceAttackArea" to="." method="punch_player"]
+[connection signal="body_exited" from="DollfaceAttackArea" to="." method="afastou"]
 [connection signal="body_entered" from="DollfaceVisionArea" to="." method="see"]
 [connection signal="body_exited" from="DollfaceVisionArea" to="." method="lost_player"]

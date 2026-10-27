@@ -12,7 +12,11 @@ var seeing_player: bool
 
 var knows_player_position: bool
 
+<<<<<<< HEAD
 var near: bool
+=======
+var seeing_player: bool
+>>>>>>> 927c4220799f6dce1a8cb704d7b8b3f772a6eced
 
 var ray_cast: RayCast2D
 
@@ -54,7 +58,13 @@ func _ready() -> void:
 
 func _physics_process(_delta: float) -> void:
 	
+<<<<<<< HEAD
 	print("DOLLFACE: ", velocity)
+=======
+	if seeing_player and not knows_player_position:
+		
+		shoot_ray_cast()
+>>>>>>> 927c4220799f6dce1a8cb704d7b8b3f772a6eced
 	
 	update_ray_cast()
 	
@@ -66,6 +76,8 @@ func _physics_process(_delta: float) -> void:
 		
 		rotate_vision(player.global_position)
 		
+		print("Eu sei aonde o jogador está!")
+	
 	else:
 		
 		velocity = Vector2.ZERO
@@ -82,9 +94,24 @@ func desviar() -> void:
 
 
 
+<<<<<<< HEAD
 func update_ray_cast() -> void:
 	
 	ray_cast.position = to_local(vision_colision.global_position)
+=======
+func shoot_ray_cast() -> void:
+
+	# O raio sai da ponta do cone de visão (1º vértice do polígono), em coordenadas
+	# globais, então, acompanha a rotação do cone.
+	ray_cast.global_position = vision_colision.to_global(vision_colision.polygon[0])
+	
+	# O alvo é o CENTRO do corpo do jogador, e não o global_position dele: a origem
+	# do jogador fica nos pés, ~0,5 px abaixo da caixa de colisão. Mirando nos pés,
+	# um raio vindo de baixo para cima para antes de encostar na caixa.
+	var player_center: Vector2 = player.get_node("CollisionShape2D").global_position
+	
+	ray_cast.target_position = ray_cast.to_local(player_center)
+>>>>>>> 927c4220799f6dce1a8cb704d7b8b3f772a6eced
 	
 	ray_cast.force_raycast_update()
 	
@@ -106,7 +133,13 @@ func see(body: Node2D) -> void:
 		
 		player = body
 		
+<<<<<<< HEAD
 		ray_cast.target_position = ray_cast.to_local(body.global_position)
+=======
+		seeing_player = true
+		
+		shoot_ray_cast()
+>>>>>>> 927c4220799f6dce1a8cb704d7b8b3f772a6eced
 
 
 
@@ -170,22 +203,25 @@ func manege_rotation() -> void:
 	
 	var state: String = "walking" if knows_player_position else "idle"
 	
+<<<<<<< HEAD
 	if near:
 		
 		state = "atacking"
 
+=======
+>>>>>>> 927c4220799f6dce1a8cb704d7b8b3f772a6eced
 	if vision_area.rotation_degrees >= -45 and vision_area.rotation_degrees < 45:
 		
 		change_animation(state + "_right")
-		
+	
 	elif vision_area.rotation_degrees <= -45 and vision_area.rotation_degrees > -135:
 		
 		change_animation(state + "_up")
-		
+	
 	elif vision_area.rotation_degrees >= 45 and vision_area.rotation_degrees <= 135:
 		
 		change_animation(state + "_down")
-		
+	
 	else:
 		
 		change_animation(state + "_left")

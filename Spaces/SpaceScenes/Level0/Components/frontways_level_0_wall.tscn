@@ -7,6 +7,8 @@ size = Vector2(2217, 944)
 
 [node name="FrontwaysLevel0wall" type="StaticBody2D" unique_id=783276937]
 scale = Vector2(0.2, 0.2)
+collision_layer = 5
+collision_mask = 5
 
 [node name="left" type="Sprite2D" parent="." unique_id=79009923]
 position = Vector2(-559, 3)
@@ -19,3 +21,6 @@ texture = ExtResource("1_agdpr")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1903463686]
 position = Vector2(-3.5, 4)
 shape = SubResource("RectangleShape2D_dw882")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=987810320]
+avoidance_enabled = true

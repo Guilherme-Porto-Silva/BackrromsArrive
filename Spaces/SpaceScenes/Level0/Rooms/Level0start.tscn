@@ -10,36 +10,18 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dw882"]
 size = Vector2(80, 172)
 
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_iecx3"]
+vertices = PackedVector2Array(950.0469, -398.47656, 920.9375, 982, 796, 247, 796, -245, 795, 806, 795, 314, -642.9297, -415.52344, 686, -245, -672.0469, 982, 685, 806, 240.60156, 513.39844, 240.60156, 792.2031, 111, 790.2031, 111, 511.39844, 686, 247, 685, 314, 110, 147.20313, 110, -131.60156, 244.60156, -130.60156, 244.60156, 148.20313, 686, -130.60156, -333, -219, -333, -131.60156, -443, -219, -443, 273, -446, 324, -333, 273, -333, 147.20313, 686, 148.20313, 685, 513.39844, -336, 511.39844, -336, 324, -336, 816, -336, 790.2031, 685, 792.2031, -446, 816)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(2, 1, 4, 5), PackedInt32Array(6, 0, 3, 7), PackedInt32Array(4, 1, 8, 9), PackedInt32Array(10, 11, 12, 13), PackedInt32Array(14, 2, 5, 15), PackedInt32Array(13, 16, 17, 18, 19, 10), PackedInt32Array(6, 7, 20, 18, 17, 21), PackedInt32Array(17, 22, 21), PackedInt32Array(6, 21, 23), PackedInt32Array(8, 6, 23, 24, 25), PackedInt32Array(26, 27, 16), PackedInt32Array(19, 28, 14, 15, 10), PackedInt32Array(15, 29, 10), PackedInt32Array(16, 13, 30, 31, 26), PackedInt32Array(32, 33, 12), PackedInt32Array(11, 34, 9, 8), PackedInt32Array(12, 11, 8, 32), PackedInt32Array(35, 32, 8), PackedInt32Array(24, 26, 31, 25), PackedInt32Array(8, 25, 35)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-687, -461, 996, -443, 965, 1027, -718, 1027)])
+agent_radius = 45.0
+
 [node name="Level0start" type="Node2D" unique_id=1517996660]
 
 [node name="Floor" type="Sprite2D" parent="." unique_id=1715278020]
 position = Vector2(576.5, 325.5)
 scale = Vector2(0.57435125, 0.3228543)
 texture = ExtResource("1_portu")
-
-[node name="leftFrontwaysWall" parent="." unique_id=783276937 instance=ExtResource("3_c6g2w")]
-position = Vector2(244, 93)
-
-[node name="rightFrontwaysWall" parent="." unique_id=1864200352 instance=ExtResource("3_c6g2w")]
-position = Vector2(912, 94)
-
-[node name="leftTopSidewaysWall" parent="." unique_id=801993327 instance=ExtResource("4_ipp2t")]
-position = Vector2(12, 113)
-
-[node name="rightTopSidewaysWall" parent="." unique_id=1746380673 instance=ExtResource("4_ipp2t")]
-position = Vector2(1141, 87)
-
-[node name="leftBottomSidewaysWall" parent="." unique_id=644768385 instance=ExtResource("4_ipp2t")]
-position = Vector2(9, 656)
-
-[node name="rightBottomSidewaysWall" parent="." unique_id=1513268429 instance=ExtResource("4_ipp2t")]
-position = Vector2(1140, 646)
-
-[node name="leftInvisibleWall" parent="." unique_id=1204365447 instance=ExtResource("3_c6g2w")]
-position = Vector2(244.99998, 736)
-
-[node name="rightInvisibleWall" parent="." unique_id=1007167390 instance=ExtResource("3_c6g2w")]
-position = Vector2(907.99994, 737.99994)
 
 [node name="leftDoorListener" type="Area2D" parent="." unique_id=332329591]
 script = ExtResource("5_ipp2t")
@@ -49,10 +31,38 @@ position = Vector2(-32, 381)
 shape = SubResource("RectangleShape2D_dw882")
 
 [node name="Dollface" parent="." unique_id=1084668826 instance=ExtResource("6_iecx3")]
-position = Vector2(490, 407)
+position = Vector2(358, 442)
 
 [node name="Guigui-chan" parent="." unique_id=656459508 instance=ExtResource("2_c6g2w")]
 z_index = 1
 position = Vector2(415, 235)
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="." unique_id=316595044]
+position = Vector2(400, 86)
+navigation_polygon = SubResource("NavigationPolygon_iecx3")
+
+[node name="rightInvisibleWall" parent="NavigationRegion2D" unique_id=1007167390 instance=ExtResource("3_c6g2w")]
+position = Vector2(507.99994, 651.99994)
+
+[node name="leftInvisibleWall" parent="NavigationRegion2D" unique_id=1204365447 instance=ExtResource("3_c6g2w")]
+position = Vector2(-155.00002, 650)
+
+[node name="rightBottomSidewaysWall" parent="NavigationRegion2D" unique_id=1513268429 instance=ExtResource("4_ipp2t")]
+position = Vector2(740, 560)
+
+[node name="leftBottomSidewaysWall" parent="NavigationRegion2D" unique_id=644768385 instance=ExtResource("4_ipp2t")]
+position = Vector2(-391, 570)
+
+[node name="rightTopSidewaysWall" parent="NavigationRegion2D" unique_id=1746380673 instance=ExtResource("4_ipp2t")]
+position = Vector2(741, 1)
+
+[node name="leftTopSidewaysWall" parent="NavigationRegion2D" unique_id=801993327 instance=ExtResource("4_ipp2t")]
+position = Vector2(-388, 27)
+
+[node name="rightFrontwaysWall" parent="NavigationRegion2D" unique_id=1864200352 instance=ExtResource("3_c6g2w")]
+position = Vector2(512, 8)
+
+[node name="leftFrontwaysWall" parent="NavigationRegion2D" unique_id=783276937 instance=ExtResource("3_c6g2w")]
+position = Vector2(-156, 7)
 
 [connection signal="body_entered" from="leftDoorListener" to="leftDoorListener" method="_on_body_entered"]

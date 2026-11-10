@@ -182,7 +182,7 @@ animations = [{
 
 [node name="Dollface" type="CharacterBody2D" unique_id=1084668826 groups=["enemies"]]
 collision_layer = 0
-collision_mask = 0
+collision_mask = 4
 script = ExtResource("1_23g5u")
 
 [node name="DollfaceAttackArea" type="Area2D" parent="." unique_id=26307485]
@@ -213,8 +213,13 @@ target_position = Vector2(1103, -857)
 
 [node name="DollfaceAnimatedSprite" type="AnimatedSprite2D" parent="." unique_id=1809823084]
 sprite_frames = SubResource("SpriteFrames_86ap7")
-animation = &"walking_up"
-frame_progress = 0.90080297
+animation = &"walking_left"
+
+[node name="DollfaceNavigationAgent" type="NavigationAgent2D" parent="." unique_id=1231771776]
+avoidance_enabled = true
+radius = 45.0
+time_horizon_obstacles = 1.5
+max_speed = 120.0
 
 [connection signal="body_entered" from="DollfaceAttackArea" to="." method="punch_player"]
 [connection signal="body_exited" from="DollfaceAttackArea" to="." method="afastou"]

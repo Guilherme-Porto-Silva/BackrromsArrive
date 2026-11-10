@@ -57,8 +57,6 @@ func animate() -> void:
 
 
 func _physics_process(_delta: float) -> void:
-	
-	print("PLAYER: ", velocity)
 
 	move()
 	

@@ -104,9 +104,9 @@ func _physics_process(delta: float) -> void:
 	
 	last_position = position
 	
-	if time_standing_still > 5:
-		
-		walk_around_corner(time_standing_still)
+	#if time_standing_still > 5:
+		#
+		#walk_around_corner(time_standing_still)
 
 
 
@@ -307,40 +307,40 @@ func afastou(body: Node2D) -> void:
 		near = false
 
 
-func walk_around_corner(previous_time_standing_still) -> void:
-	
-	if knows_player_position and position == last_position:
-		
-		velocity.y += speed
-		
-		await get_tree().create_timer(15.0).timeout
-	
-		if knows_player_position and position == last_position:
-			
-			velocity.y -= speed
-			
-			await get_tree().create_timer(15.0).timeout
-	
-			if knows_player_position and position == last_position:
-				
-				velocity.x -= speed
-				
-				await get_tree().create_timer(15.0).timeout
-		
-				velocity.y += speed
-				
-				await get_tree().create_timer(15.0).timeout
-	
-				if knows_player_position and position == last_position:
-					
-					velocity.x -= speed
-					
-					await get_tree().create_timer(15.0).timeout
-			
-					velocity.y -= speed
-					
-					await get_tree().create_timer(15.0).timeout
-		
-	else:
-		
-		time_standing_still = 0
+#func walk_around_corner(previous_time_standing_still) -> void:
+	#
+	#if knows_player_position and position == last_position:
+		#
+		#velocity.y += speed
+		#
+		#await get_tree().create_timer(15.0).timeout
+	#
+		#if knows_player_position and position == last_position:
+			#
+			#velocity.y -= speed
+			#
+			#await get_tree().create_timer(15.0).timeout
+	#
+			#if knows_player_position and position == last_position:
+				#
+				#velocity.x -= speed
+				#
+				#await get_tree().create_timer(15.0).timeout
+		#
+				#velocity.y += speed
+				#
+				#await get_tree().create_timer(15.0).timeout
+	#
+				#if knows_player_position and position == last_position:
+					#
+					#velocity.x -= speed
+					#
+					#await get_tree().create_timer(15.0).timeout
+			#
+					#velocity.y -= speed
+					#
+					#await get_tree().create_timer(15.0).timeout
+		#
+	#else:
+		#
+		#time_standing_still = 0

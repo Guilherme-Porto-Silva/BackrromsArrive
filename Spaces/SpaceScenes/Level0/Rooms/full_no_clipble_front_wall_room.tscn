@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://sewjfvrismom" path="res://Spaces/SpaceScenes/Level0/Components/frontways_level_0_wall.tscn" id="3_0qqme"]
 [ext_resource type="PackedScene" uid="uid://srqtrqr4x6p1" path="res://Spaces/SpaceScenes/Level0/Components/moist/left_moist_level_0_wall.tscn" id="4_a3a6e"]
 [ext_resource type="PackedScene" uid="uid://bnnw1fuslexmr" path="res://Characters/CharacterScenes/Player.tscn" id="5_g85lf"]
+[ext_resource type="PackedScene" uid="uid://umokqs2di0ue" path="res://Spaces/SpaceScenes/Level0/Components/sideways_level_0_wall.tscn" id="6_0qqme"]
 
 [node name="fullNoClipbleFrontWallRoom" type="Node2D" unique_id=1175133351]
 
@@ -14,6 +15,7 @@ scale = Vector2(0.5758483, 0.3258483)
 texture = ExtResource("1_8qu7m")
 
 [node name="moistLeftNullZoneRightLevel0wall" parent="." unique_id=967988161 instance=ExtResource("2_g85lf")]
+z_index = 20
 position = Vector2(261, 85)
 
 [node name="FrontwaysLevel0wall" parent="." unique_id=783276937 instance=ExtResource("3_0qqme")]
@@ -23,4 +25,26 @@ position = Vector2(692.99994, 92.99999)
 position = Vector2(1146, 72)
 
 [node name="Guigui-chan" parent="." unique_id=656459508 instance=ExtResource("5_g85lf")]
+visibility_layer = 4
+z_index = 1
 position = Vector2(1146, 374)
+
+[node name="SidewaysLevel0wall" parent="." unique_id=801993327 instance=ExtResource("6_0qqme")]
+position = Vector2(18, -12)
+
+[node name="SidewaysLevel0wall2" parent="." unique_id=140579641 instance=ExtResource("6_0qqme")]
+position = Vector2(481, -10)
+
+[node name="SidewaysLevel0wall3" parent="." unique_id=486037015 instance=ExtResource("6_0qqme")]
+position = Vector2(18, -409)
+
+[node name="SidewaysLevel0wall4" parent="." unique_id=1993498037 instance=ExtResource("6_0qqme")]
+position = Vector2(480, -409)
+
+[node name="FrontwaysLevel0wall" parent="SidewaysLevel0wall4" unique_id=2010034154 instance=ExtResource("3_0qqme")]
+position = Vector2(-230.00002, -41.333332)
+
+[node name="secret_room_floor" type="Sprite2D" parent="." unique_id=861348435]
+position = Vector2(248.5, -173.5)
+scale = Vector2(0.22305389, 0.15518963)
+texture = ExtResource("1_8qu7m")

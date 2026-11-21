@@ -4,24 +4,17 @@ class_name Player
 
 const SPEED = 300
 
-const full_hp = 100
+const full_hp: int = 100
 
 var current_hp: int
 
-@onready var hp_bar = $"../CanvasLayer/hp_bar"
-
-@onready var hp_bar_background = $"../CanvasLayer/hp_bar_background"
+var hp_bar: ColorRect
 
 @onready var player_sprite = $PlayerSprite
-
-# A anotação @export diz, para a Godot:
-
-# "Mostre essa variável lá na interface do painel Inspetor, para que eu possa preenchê-la manualmente."
 
 @export var animations: AnimationTree
 
 var state_machine
-
 
 
 func move() -> void:
@@ -78,7 +71,7 @@ func _ready() -> void:
 	
 	state_machine = animations["parameters/playback"]
 	
-	chose_sprite();
+	hp_bar = $HP/Current
 
 
 
@@ -89,22 +82,28 @@ func heal(heal_amount: int) -> void:
 	if current_hp > full_hp:
 		
 		current_hp = full_hp
+	
+	update_health_bar()
 
 
 
 func damage(damage_amount: int) -> void:
 	
-	current_hp -= damage_amount
+	current_hp = current_hp - damage_amount
 	
 	if current_hp <= 0:
 		
 		die()
+		
+	else:
+		
+		update_health_bar()
 
 
 
 func die() -> void:
 	
-	get_tree().change_scene_to_file("C:/Users/Igor/Desktop/backroomsArrive/Spaces/SpaceScenes/Menu/menu.tscn")
+	get_tree().change_scene_to_file("res://Spaces/SpaceScenes/Menu/game_over.tscn")
 	
 	Memory.kian_found = false
 	
@@ -113,3 +112,23 @@ func die() -> void:
 	Memory.powder_found = false
 	
 	Memory.teacup_found = false
+
+
+
+func update_health_bar():
+
+	var ratio: float = float(current_hp) / full_hp
+
+	hp_bar.scale.x = ratio
+
+	if ratio > 0.6:
+
+		hp_bar.color = Color(0,1,0)
+
+	elif ratio > 0.3:
+
+		hp_bar.color = Color(1,1,0)
+
+	else:
+
+		hp_bar.color = Color(1,0,0)

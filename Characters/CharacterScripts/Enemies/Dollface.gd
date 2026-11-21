@@ -4,7 +4,7 @@ var speed = 150
 
 var damage = 5
 
-var attack_cooldown = 15
+var attack_cooldown = 1
 
 var player: Player
 
@@ -30,10 +30,6 @@ var acceleration: float = 600.0
 
 var lookahead_distance: float = 10.0
 
-var time_standing_still: int
-
-var last_position: Vector2
-
 
 
 func _ready() -> void:
@@ -48,15 +44,17 @@ func _ready() -> void:
 	
 	vision_area = $DollfaceVisionArea
 	
-	timer_ataque = $DollfaceAttackTimer
-	
 	vision_colision = $DollfaceVisionArea/VisionCollision
 	
 	ray_cast = $DollfaceRayCast2D
 	
 	ray_cast.add_exception(self)
 	
-	time_standing_still = 0
+	timer_ataque = $DollfaceAttackTimer
+	
+	timer_ataque.wait_time = attack_cooldown
+	
+	timer_ataque.one_shot = true
 	
 	
 	
@@ -65,8 +63,6 @@ func _ready() -> void:
 	nav_agent.avoidance_enabled = true
 	
 	nav_agent.max_speed = speed
-	
-	#nav_agent.radius = 70.0
 	
 	nav_agent.time_horizon_obstacles = 1.5
 	
@@ -86,7 +82,7 @@ func _physics_process(delta: float) -> void:
 
 	update_ray_cast()
 
-	if knows_player_position and player != null:
+	if knows_player_position and player != null and not near:
 		
 		chase_player(delta)
 			
@@ -98,15 +94,13 @@ func _physics_process(delta: float) -> void:
 	
 	move_and_slide()
 	
-	if last_position == position:
+	if near:
 		
-		time_standing_still += 1
-	
-	last_position = position
-	
-	#if time_standing_still > 5:
-		#
-		#walk_around_corner(time_standing_still)
+		velocity = Vector2.ZERO
+		
+		if timer_ataque.is_stopped():
+		
+			attack_player()
 
 
 
@@ -231,12 +225,10 @@ func lost_player(body: Node2D) -> void:
 
 
 func attack_player() -> void:
+		
+	player.damage(damage)
 	
-	if timer_ataque.is_stopped():
-		
-		player.damage(damage)
-		
-		timer_ataque.start(attack_cooldown)
+	timer_ataque.start()
 
 
 
@@ -244,11 +236,9 @@ func punch_player(body: Node2D) -> void:
 	
 	if body.is_in_group("players"):
 		
-		near = true
-		
 		player = body
 		
-		attack_player()
+		near = true
 
 
 
@@ -305,42 +295,3 @@ func afastou(body: Node2D) -> void:
 	if body.is_in_group("players"):
 		
 		near = false
-
-
-#func walk_around_corner(previous_time_standing_still) -> void:
-	#
-	#if knows_player_position and position == last_position:
-		#
-		#velocity.y += speed
-		#
-		#await get_tree().create_timer(15.0).timeout
-	#
-		#if knows_player_position and position == last_position:
-			#
-			#velocity.y -= speed
-			#
-			#await get_tree().create_timer(15.0).timeout
-	#
-			#if knows_player_position and position == last_position:
-				#
-				#velocity.x -= speed
-				#
-				#await get_tree().create_timer(15.0).timeout
-		#
-				#velocity.y += speed
-				#
-				#await get_tree().create_timer(15.0).timeout
-	#
-				#if knows_player_position and position == last_position:
-					#
-					#velocity.x -= speed
-					#
-					#await get_tree().create_timer(15.0).timeout
-			#
-					#velocity.y -= speed
-					#
-					#await get_tree().create_timer(15.0).timeout
-		#
-	#else:
-		#
-		#time_standing_still = 0

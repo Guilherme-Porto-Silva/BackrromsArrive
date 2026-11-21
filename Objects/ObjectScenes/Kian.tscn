@@ -7,7 +7,7 @@
 size = Vector2(395, 517)
 
 [node name="Kian" type="Area2D" unique_id=471241113]
-scale = Vector2(0.35, 0.35)
+scale = Vector2(0.15, 0.15)
 script = ExtResource("1_cx18e")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1351215896]

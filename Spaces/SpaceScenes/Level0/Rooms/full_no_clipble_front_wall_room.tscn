@@ -6,6 +6,11 @@
 [ext_resource type="PackedScene" uid="uid://srqtrqr4x6p1" path="res://Spaces/SpaceScenes/Level0/Components/moist/left_moist_level_0_wall.tscn" id="4_a3a6e"]
 [ext_resource type="PackedScene" uid="uid://bnnw1fuslexmr" path="res://Characters/CharacterScenes/Player.tscn" id="5_g85lf"]
 [ext_resource type="PackedScene" uid="uid://umokqs2di0ue" path="res://Spaces/SpaceScenes/Level0/Components/sideways_level_0_wall.tscn" id="6_0qqme"]
+[ext_resource type="Script" uid="uid://bpe876inkf81c" path="res://Spaces/SpaceScenes/Level0/Rooms/top_secret_area.gd" id="6_6qflk"]
+[ext_resource type="PackedScene" uid="uid://dqhy302qvtcps" path="res://Objects/ObjectScenes/Kian.tscn" id="7_a3a6e"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5c1j0"]
+size = Vector2(483, 753)
 
 [node name="fullNoClipbleFrontWallRoom" type="Node2D" unique_id=1175133351]
 
@@ -29,22 +34,41 @@ visibility_layer = 4
 z_index = 1
 position = Vector2(1146, 374)
 
-[node name="SidewaysLevel0wall" parent="." unique_id=801993327 instance=ExtResource("6_0qqme")]
-position = Vector2(18, -12)
+[node name="top_secret_area" type="Node2D" parent="." unique_id=786686176 node_paths=PackedStringArray("secret_area")]
+script = ExtResource("6_6qflk")
+secret_area = NodePath(".")
+fade_duration = 0.5
 
-[node name="SidewaysLevel0wall2" parent="." unique_id=140579641 instance=ExtResource("6_0qqme")]
-position = Vector2(481, -10)
+[node name="Kian" parent="top_secret_area" unique_id=471241113 instance=ExtResource("7_a3a6e")]
+top_level = true
+position = Vector2(244, -189)
 
-[node name="SidewaysLevel0wall3" parent="." unique_id=486037015 instance=ExtResource("6_0qqme")]
-position = Vector2(18, -409)
-
-[node name="SidewaysLevel0wall4" parent="." unique_id=1993498037 instance=ExtResource("6_0qqme")]
-position = Vector2(480, -409)
-
-[node name="FrontwaysLevel0wall" parent="SidewaysLevel0wall4" unique_id=2010034154 instance=ExtResource("3_0qqme")]
-position = Vector2(-230.00002, -41.333332)
-
-[node name="secret_room_floor" type="Sprite2D" parent="." unique_id=861348435]
+[node name="secret_room_floor" type="Sprite2D" parent="top_secret_area" unique_id=861348435]
 position = Vector2(248.5, -173.5)
 scale = Vector2(0.22305389, 0.15518963)
 texture = ExtResource("1_8qu7m")
+
+[node name="topSecretRoom" type="Area2D" parent="top_secret_area" unique_id=898502480]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="top_secret_area/topSecretRoom" unique_id=653307616]
+position = Vector2(249, -227.5)
+shape = SubResource("RectangleShape2D_5c1j0")
+
+[node name="SidewaysLevel0wall3" parent="top_secret_area" unique_id=486037015 instance=ExtResource("6_0qqme")]
+position = Vector2(18, -409)
+
+[node name="SidewaysLevel0wall4" parent="top_secret_area" unique_id=1993498037 instance=ExtResource("6_0qqme")]
+position = Vector2(480, -409)
+
+[node name="FrontwaysLevel0wall" parent="top_secret_area" unique_id=2010034154 instance=ExtResource("3_0qqme")]
+position = Vector2(249.99998, -471)
+scale = Vector2(0.2, 0.3)
+
+[node name="SidewaysLevel0wall2" parent="top_secret_area" unique_id=140579641 instance=ExtResource("6_0qqme")]
+position = Vector2(481, -10)
+
+[node name="SidewaysLevel0wall" parent="top_secret_area" unique_id=801993327 instance=ExtResource("6_0qqme")]
+position = Vector2(18, -12)
+
+[connection signal="body_entered" from="top_secret_area/topSecretRoom" to="top_secret_area" method="touch"]
+[connection signal="body_exited" from="top_secret_area/topSecretRoom" to="top_secret_area" method="untouch"]

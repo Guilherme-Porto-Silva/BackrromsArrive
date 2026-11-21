@@ -4,7 +4,7 @@ const almond_water_heal_amount = 10
 
 func colected(body: CharacterBody2D) -> void:
 	
-	if body.is_in_group("player"):
+	if body.is_in_group("players"):
 		
 		body.heal(almond_water_heal_amount)
 		

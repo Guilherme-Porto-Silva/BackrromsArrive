@@ -229,6 +229,7 @@ states/WalkingBlendSpace2D/position = Vector2(602, 99)
 
 [node name="Player" type="CharacterBody2D" unique_id=656459508 node_paths=PackedStringArray("animations") groups=["players"]]
 light_mask = 2
+position = Vector2(581, 325)
 scale = Vector2(0.5, 0.5)
 script = ExtResource("1_dw3x8")
 animations = NodePath("PlayerAnimationTree")
@@ -253,3 +254,28 @@ parameters/IdleBlendSpace2D/blend_position = Vector2(0, 0)
 parameters/WalkingBlendSpace2D/blend_position = Vector2(0, 0)
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=776049361 groups=["players"]]
+
+[node name="HP" type="CanvasLayer" parent="." unique_id=897802708]
+
+[node name="Lost" type="ColorRect" parent="HP" unique_id=451438807]
+anchors_preset = -1
+anchor_left = 0.38900003
+anchor_top = 0.231
+anchor_right = 0.619
+anchor_bottom = 0.246
+offset_left = -0.12802124
+offset_top = 0.31199646
+offset_right = -0.088012695
+offset_bottom = 9.591995
+
+[node name="Current" type="ColorRect" parent="HP" unique_id=1276701578]
+anchors_preset = -1
+anchor_left = 0.41300002
+anchor_top = 0.22900002
+anchor_right = 0.61200005
+anchor_bottom = 0.26000002
+offset_left = -27.776031
+offset_top = 0.60798645
+offset_right = 7.975952
+offset_bottom = 0.519989
+color = Color(0, 1, 0, 1)

@@ -1,0 +1,60 @@
+[gd_scene format=3 uid="uid://dr6rm1x5dwdb7"]
+
+[ext_resource type="Script" uid="uid://77i7q6n1j41r" path="res://Spaces/SpaceScripts/Menu/game_over.gd" id="1_7fc0q"]
+
+[node name="GameOver" type="Node2D" unique_id=309731901]
+script = ExtResource("1_7fc0q")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=372590023]
+offset_right = 1153.0
+offset_bottom = 644.0
+color = Color(0, 0, 0, 1)
+
+[node name="MainLabel" type="Label" parent="." unique_id=2019158453]
+offset_left = 214.0
+offset_top = 167.0
+offset_right = 923.0
+offset_bottom = 244.0
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_font_sizes/font_size = 50
+text = "As Backrooms te assimilaram"
+
+[node name="SecondaryLabel" type="Label" parent="." unique_id=1087899462]
+offset_left = 479.0
+offset_top = 258.0
+offset_right = 590.0
+offset_bottom = 286.0
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+text = "F ai no chat"
+
+[node name="RestartButton" type="Button" parent="." unique_id=682850406]
+offset_left = 305.0
+offset_top = 333.0
+offset_right = 457.0
+offset_bottom = 364.0
+theme_override_colors/font_outline_color = Color(1, 0, 0, 1)
+theme_override_constants/outline_size = 2
+text = "Tentar novamente"
+
+[node name="MenuButton" type="Button" parent="." unique_id=2092412075]
+offset_left = 641.0
+offset_top = 331.0
+offset_right = 785.0
+offset_bottom = 363.0
+theme_override_colors/font_outline_color = Color(1, 0, 0, 1)
+theme_override_constants/outline_size = 2
+text = "De volta ao menu"
+
+[node name="QuitButton" type="Button" parent="." unique_id=381393957]
+offset_left = 509.0
+offset_top = 334.0
+offset_right = 578.0
+offset_bottom = 366.0
+theme_override_colors/font_outline_color = Color(1, 0, 0, 1)
+theme_override_constants/outline_size = 2
+text = "Vazar"
+
+[connection signal="pressed" from="RestartButton" to="." method="start_again"]
+[connection signal="pressed" from="MenuButton" to="." method="return_to_menu"]
+[connection signal="pressed" from="QuitButton" to="." method="quit"]

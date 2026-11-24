@@ -7,3 +7,5 @@ extends Node
 @export var powder_found: bool
 
 @export var teacup_found: bool
+
+@export var player_hp: int

@@ -6,15 +6,12 @@ const SPEED = 300
 
 const full_hp: int = 100
 
-var current_hp: int
+var animated_sprite: AnimatedSprite2D
 
 var hp_bar: ColorRect
 
-@onready var player_sprite = $PlayerSprite
+var player_sprite: Sprite2D
 
-@export var animations: AnimationTree
-
-var state_machine
 
 
 func move() -> void:
@@ -23,37 +20,23 @@ func move() -> void:
 
 	if direction != Vector2.ZERO:
 		
-		animations["parameters/WalkingBlendSpace2D/blend_position"] = direction
-		
 		velocity.x = direction.normalized().x * SPEED
 		
 		velocity.y = direction.normalized().y * SPEED
-		
-		return
 	
-	velocity.x = move_toward(velocity.x, 0, SPEED)
+	else:
 	
-	velocity.y = move_toward(velocity.y, 0, SPEED)
-
-
-
-func animate() -> void:
-
-	if velocity.length() > 1:
+		velocity.x = move_toward(velocity.x, 0, SPEED)
 		
-		state_machine.travel("WalkingBlendSpace2D")
-		
-		return
-
-	state_machine.travel("IdleBlendSpace2D")
+		velocity.y = move_toward(velocity.y, 0, SPEED)
+	
+	manege_rotation(direction)
 
 
 
 func _physics_process(_delta: float) -> void:
 
 	move()
-	
-	animate()
 
 	move_and_slide()
 
@@ -67,21 +50,25 @@ func chose_sprite() -> void:
 
 func _ready() -> void:
 	
-	current_hp = full_hp
+	player_sprite = $PlayerSprite
 	
-	state_machine = animations["parameters/playback"]
+	animated_sprite = $PlayerAnimatedSprite
 	
 	hp_bar = $HP/Current
+	
+	Memory.player_hp = Memory.player_hp if Memory.player_hp > 0 else full_hp
+	
+	update_health_bar()
 
 
 
 func heal(heal_amount: int) -> void:
 	
-	current_hp += heal_amount
+	Memory.player_hp += heal_amount
 	
-	if current_hp > full_hp:
+	if Memory.player_hp > full_hp:
 		
-		current_hp = full_hp
+		Memory.player_hp = full_hp
 	
 	update_health_bar()
 
@@ -89,9 +76,9 @@ func heal(heal_amount: int) -> void:
 
 func damage(damage_amount: int) -> void:
 	
-	current_hp = current_hp - damage_amount
+	Memory.player_hp = Memory.player_hp - damage_amount
 	
-	if current_hp <= 0:
+	if Memory.player_hp <= 0:
 		
 		die()
 		
@@ -117,7 +104,7 @@ func die() -> void:
 
 func update_health_bar():
 
-	var ratio: float = float(current_hp) / full_hp
+	var ratio: float = float(Memory.player_hp) / full_hp
 
 	hp_bar.scale.x = ratio
 
@@ -132,3 +119,31 @@ func update_health_bar():
 	else:
 
 		hp_bar.color = Color(1,0,0)
+
+
+
+func change_animation(animation: String) -> void:
+	
+	animated_sprite.play(animation)
+
+
+
+func manege_rotation(direction: Vector2) -> void:
+
+	var state: String = "walking" if direction != Vector2.ZERO else "idle"
+
+	if direction.y < 0:
+
+		change_animation(state + "_up")
+
+	elif direction.y > 0:
+
+		change_animation(state + "_down")
+
+	elif direction.x > 0:
+
+		change_animation(state + "_right")
+
+	elif direction.x < 0:
+
+		change_animation(state + "_left")

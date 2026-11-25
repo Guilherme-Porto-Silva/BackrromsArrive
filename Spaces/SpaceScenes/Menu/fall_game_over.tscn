@@ -1,0 +1,51 @@
+[gd_scene format=3 uid="uid://6c0i5npynxtn"]
+
+[ext_resource type="Texture2D" uid="uid://sny2plc28ex7" path="res://Spaces/SpaceImages/Menu/void.png" id="1_rjrf4"]
+[ext_resource type="Script" uid="uid://77i7q6n1j41r" path="res://Spaces/SpaceScripts/Menu/game_over.gd" id="1_vjcis"]
+
+[node name="FallGameOver" type="Node2D" unique_id=2013413503]
+script = ExtResource("1_vjcis")
+
+[node name="Background" type="Sprite2D" parent="." unique_id=1582439399]
+position = Vector2(578, 324.5)
+scale = Vector2(0.6020833, 0.60462964)
+texture = ExtResource("1_rjrf4")
+
+[node name="Label" type="Label" parent="." unique_id=1939094714]
+offset_left = 283.0
+offset_top = 200.0
+offset_right = 895.0
+offset_bottom = 269.0
+theme_override_font_sizes/font_size = 50
+text = "A queda sera´ bem longa."
+
+[node name="RestartButton" type="Button" parent="." unique_id=867296786]
+offset_left = 160.0
+offset_top = 340.0
+offset_right = 392.0
+offset_bottom = 383.0
+theme_override_constants/outline_size = 2
+theme_override_font_sizes/font_size = 25
+text = "Tentar novamente"
+
+[node name="MenuButton" type="Button" parent="." unique_id=1023059191]
+offset_left = 809.0
+offset_top = 342.0
+offset_right = 1029.0
+offset_bottom = 385.0
+theme_override_constants/outline_size = 2
+theme_override_font_sizes/font_size = 25
+text = "De volta ao menu"
+
+[node name="QuitButton" type="Button" parent="." unique_id=1739951969]
+offset_left = 554.0
+offset_top = 339.0
+offset_right = 623.0
+offset_bottom = 371.0
+theme_override_constants/outline_size = 2
+theme_override_font_sizes/font_size = 25
+text = "Vazar"
+
+[connection signal="pressed" from="RestartButton" to="." method="_on_restart_button_pressed"]
+[connection signal="pressed" from="MenuButton" to="." method="_on_menu_button_pressed"]
+[connection signal="pressed" from="QuitButton" to="." method="_on_quit_button_pressed"]

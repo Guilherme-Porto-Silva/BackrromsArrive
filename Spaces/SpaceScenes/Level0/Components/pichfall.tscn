@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://446wn8607f71"]
+
+[ext_resource type="Script" uid="uid://cqv7v6ashp4mj" path="res://Spaces/SpaceScripts/pichfall.gd" id="1_k0irl"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5c1j0"]
+size = Vector2(38, 38)
+
+[node name="Pichfall" type="Node2D" unique_id=1361923048]
+script = ExtResource("1_k0irl")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1775691753]
+offset_right = 40.0
+offset_bottom = 40.0
+color = Color(0.039215688, 0.039215688, 0.039215688, 1)
+
+[node name="HoleArea" type="Area2D" parent="." unique_id=414959715]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HoleArea" unique_id=1976650281]
+position = Vector2(20, 20)
+shape = SubResource("RectangleShape2D_5c1j0")
+
+[connection signal="body_entered" from="HoleArea" to="." method="_on_hole_area_body_entered"]

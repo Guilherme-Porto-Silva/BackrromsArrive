@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://srqtrqr4x6p1" path="res://Spaces/SpaceScenes/Level0/Components/moist/left_moist_level_0_wall.tscn" id="4_a3a6e"]
 [ext_resource type="PackedScene" uid="uid://bnnw1fuslexmr" path="res://Characters/CharacterScenes/Player.tscn" id="5_g85lf"]
 [ext_resource type="PackedScene" uid="uid://umokqs2di0ue" path="res://Spaces/SpaceScenes/Level0/Components/sideways_level_0_wall.tscn" id="6_0qqme"]
-[ext_resource type="Script" uid="uid://bpe876inkf81c" path="res://Spaces/SpaceScenes/Level0/Rooms/top_secret_area.gd" id="6_6qflk"]
+[ext_resource type="Script" uid="uid://bpe876inkf81c" path="res://Spaces/SpaceScripts/top_secret_area.gd" id="6_6qflk"]
 [ext_resource type="PackedScene" uid="uid://dqhy302qvtcps" path="res://Objects/ObjectScenes/Kian.tscn" id="7_a3a6e"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5c1j0"]

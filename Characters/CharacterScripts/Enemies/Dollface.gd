@@ -6,8 +6,6 @@ var damage = 5
 
 var attack_cooldown = 1
 
-var player: Player
-
 var seeing_player: bool
 
 var knows_player_position: bool
@@ -82,7 +80,7 @@ func _physics_process(delta: float) -> void:
 
 	update_ray_cast()
 
-	if knows_player_position and player != null and not near:
+	if knows_player_position and not near:
 		
 		chase_player(delta)
 			
@@ -160,7 +158,7 @@ func update_ray_cast() -> void:
 
 func chase_player(delta) -> void:
 	
-	nav_agent.target_position = player.global_position
+	nav_agent.target_position = Memory.player.global_position
 
 	if nav_agent.is_navigation_finished():
 		
@@ -176,7 +174,7 @@ func chase_player(delta) -> void:
 		
 		velocity = velocity.move_toward(direction * speed, acceleration * delta)
 
-	rotate_vision(player.global_position)
+	rotate_vision(Memory.player.global_position)
 
 
 
@@ -184,13 +182,13 @@ func shoot_ray_cast() -> void:
 	
 	ray_cast.global_position = vision_colision.to_global(vision_colision.polygon[0])
 
-	var player_center: Vector2 = player.get_node("CollisionShape2D").global_position
+	var player_center: Vector2 = Memory.player.get_node("CollisionShape2D").global_position
 	
 	ray_cast.target_position = ray_cast.to_local(player_center)
 	
 	ray_cast.force_raycast_update()
 
-	if ray_cast.is_colliding() and ray_cast.get_collider() == player:
+	if ray_cast.is_colliding() and ray_cast.get_collider() == Memory.player:
 		
 		knows_player_position = true
 		
@@ -202,8 +200,6 @@ func see(body: Node2D) -> void:
 	
 	if body.is_in_group("players"):
 		
-		player = body
-		
 		ray_cast.target_position = ray_cast.to_local(body.global_position)
 		
 		seeing_player = true
@@ -214,7 +210,7 @@ func see(body: Node2D) -> void:
 
 func lost_player(body: Node2D) -> void:
 	
-	if body == player:
+	if body == Memory.player:
 		
 		seeing_player = false
 		
@@ -226,7 +222,7 @@ func lost_player(body: Node2D) -> void:
 
 func attack_player() -> void:
 		
-	player.damage(damage)
+	Memory.player.damage(damage)
 	
 	timer_ataque.start()
 
@@ -235,8 +231,6 @@ func attack_player() -> void:
 func punch_player(body: Node2D) -> void:
 	
 	if body.is_in_group("players"):
-		
-		player = body
 		
 		near = true
 
@@ -255,16 +249,14 @@ func change_animation(animation: String) -> void:
 
 
 func manege_rotation() -> void:
-	
-	if player != null:
 		
-		if player.global_position.y < global_position.y:
-			
-			z_index = 2
-			
-		else:
-			
-			z_index = 0
+	if Memory.player.global_position.y < global_position.y:
+		
+		z_index = 2
+		
+	else:
+		
+		z_index = 0
 
 	var state: String = "walking" if knows_player_position else "idle"
 

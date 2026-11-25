@@ -12,17 +12,19 @@ var hp_bar: ColorRect
 
 var player_sprite: Sprite2D
 
+var direction: String
+
 
 
 func move() -> void:
 	
-	var direction: Vector2 = Vector2(Input.get_axis("walkLeft", "walkRight"), Input.get_axis("walkFront", "walkBack"))
+	var movement: Vector2 = Vector2(Input.get_axis("walkLeft", "walkRight"), Input.get_axis("walkFront", "walkBack"))
 
-	if direction != Vector2.ZERO:
+	if movement != Vector2.ZERO:
 		
-		velocity.x = direction.normalized().x * SPEED
+		velocity.x = movement.normalized().x * SPEED
 		
-		velocity.y = direction.normalized().y * SPEED
+		velocity.y = movement.normalized().y * SPEED
 	
 	else:
 	
@@ -30,7 +32,7 @@ func move() -> void:
 		
 		velocity.y = move_toward(velocity.y, 0, SPEED)
 	
-	manege_rotation(direction)
+	manege_rotation(movement)
 
 
 
@@ -59,6 +61,10 @@ func _ready() -> void:
 	Memory.player_hp = Memory.player_hp if Memory.player_hp > 0 else full_hp
 	
 	update_health_bar()
+	
+	direction = "down"
+	
+	Memory.player = self
 
 
 
@@ -128,22 +134,24 @@ func change_animation(animation: String) -> void:
 
 
 
-func manege_rotation(direction: Vector2) -> void:
+func manege_rotation(movement: Vector2) -> void:
 
-	var state: String = "walking" if direction != Vector2.ZERO else "idle"
+	var state: String = "walking" if movement != Vector2.ZERO else "idle"
 
-	if direction.y < 0:
+	if movement.y < 0:
 
-		change_animation(state + "_up")
+		direction = "up"
 
-	elif direction.y > 0:
+	elif movement.y > 0:
 
-		change_animation(state + "_down")
+		direction = "down"
 
-	elif direction.x > 0:
+	elif movement.x > 0:
 
-		change_animation(state + "_right")
+		direction = "right"
 
-	elif direction.x < 0:
+	elif movement.x < 0:
 
-		change_animation(state + "_left")
+		direction = "left"
+	
+	change_animation(state + '_' + direction)

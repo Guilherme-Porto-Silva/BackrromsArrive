@@ -1,14 +1,19 @@
 [gd_scene format=3 uid="uid://sewjfvrismom"]
 
 [ext_resource type="Texture2D" uid="uid://dg0p56xcoqurl" path="res://Spaces/SpaceImages/Level0/level0wallpaper.png" id="1_agdpr"]
+[ext_resource type="Script" uid="uid://da6ixp00wxoji" path="res://Spaces/SpaceScripts/Wall.gd" id="1_lx126"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dw882"]
-size = Vector2(2217, 944)
+size = Vector2(2223.5005, 152.49977)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5c1j0"]
+size = Vector2(2110.002, 905.0006)
 
 [node name="FrontwaysLevel0wall" type="StaticBody2D" unique_id=783276937]
 scale = Vector2(0.2, 0.2)
 collision_layer = 5
 collision_mask = 5
+script = ExtResource("1_lx126")
 
 [node name="left" type="Sprite2D" parent="." unique_id=79009923]
 position = Vector2(-559, 3)
@@ -19,8 +24,19 @@ position = Vector2(548, 3)
 texture = ExtResource("1_agdpr")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1903463686]
-position = Vector2(-3.5, 4)
+position = Vector2(-16.749866, 406.24976)
+scale = Vector2(0.9999994, 0.9999994)
 shape = SubResource("RectangleShape2D_dw882")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=987810320]
 avoidance_enabled = true
+
+[node name="NearbyArea" type="Area2D" parent="." unique_id=557994685]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NearbyArea" unique_id=37097351]
+position = Vector2(-10.000065, 7.499957)
+scale = Vector2(0.9999989, 0.9999989)
+shape = SubResource("RectangleShape2D_5c1j0")
+
+[connection signal="body_entered" from="NearbyArea" to="." method="frontways_level0_wall_body_entered"]
+[connection signal="body_exited" from="NearbyArea" to="." method="frontways_level0_wall_body_exited"]

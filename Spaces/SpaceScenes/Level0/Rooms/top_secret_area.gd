@@ -4,7 +4,7 @@ extends Node2D
 
 @export var fade_duration: float = 1.0
 
-var player_inside: bool = false
+var player_inside: bool
 
 
 
@@ -17,10 +17,12 @@ func _ready() -> void:
 	else:
 
 		push_warning("⚠️ secret_area não configurada em %s" % name)
+	
+	player_inside = false
 
 
 
-func reveal_secret() -> void:
+func toggle_secret() -> void:
 
 	if not secret_area:
 
@@ -30,7 +32,7 @@ func reveal_secret() -> void:
 	
 	var tween = create_tween()
 	
-	secret_area.visible = true
+	secret_area.visible = player_inside
 
 	secret_area.modulate.a = 0.0
 	
@@ -45,8 +47,6 @@ func touch(body: Node2D) -> void:
 	if body.is_in_group("players"):
 		
 		player_inside = true
-		
-		reveal_secret()
 
 
 
@@ -55,3 +55,9 @@ func untouch(body: Node2D) -> void:
 	if body.is_in_group("players"):
 		
 		player_inside = false
+
+
+
+func _physics_process(delta: float) -> void:
+	
+	toggle_secret()

@@ -32,9 +32,10 @@ position = Vector2(1146, 72)
 [node name="Guigui-chan" parent="." unique_id=656459508 instance=ExtResource("5_g85lf")]
 visibility_layer = 4
 z_index = 1
-position = Vector2(1146, 374)
+position = Vector2(604, 405)
 
 [node name="top_secret_area" type="Node2D" parent="." unique_id=786686176 node_paths=PackedStringArray("secret_area")]
+position = Vector2(0, 19)
 script = ExtResource("6_6qflk")
 secret_area = NodePath(".")
 fade_duration = 0.5
@@ -65,10 +66,10 @@ position = Vector2(249.99998, -471)
 scale = Vector2(0.2, 0.3)
 
 [node name="SidewaysLevel0wall2" parent="top_secret_area" unique_id=140579641 instance=ExtResource("6_0qqme")]
-position = Vector2(481, -10)
+position = Vector2(481, -29.999998)
 
 [node name="SidewaysLevel0wall" parent="top_secret_area" unique_id=801993327 instance=ExtResource("6_0qqme")]
-position = Vector2(18, -12)
+position = Vector2(18, -27)
 
 [connection signal="body_entered" from="top_secret_area/topSecretRoom" to="top_secret_area" method="touch"]
 [connection signal="body_exited" from="top_secret_area/topSecretRoom" to="top_secret_area" method="untouch"]

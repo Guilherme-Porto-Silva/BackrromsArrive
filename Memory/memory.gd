@@ -1,5 +1,7 @@
 extends Node
 
+var player: Player
+
 @export var kian_found: bool
 
 @export var mondial_found: bool

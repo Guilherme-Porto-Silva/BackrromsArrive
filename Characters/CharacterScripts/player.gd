@@ -98,13 +98,7 @@ func die() -> void:
 	
 	get_tree().change_scene_to_file("res://Spaces/SpaceScenes/Menu/game_over.tscn")
 	
-	Memory.kian_found = false
-	
-	Memory.mondial_found = false
-	
-	Memory.powder_found = false
-	
-	Memory.teacup_found = false
+	Memory.reset()
 
 
 

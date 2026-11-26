@@ -8,11 +8,14 @@
 [ext_resource type="PackedScene" uid="uid://umokqs2di0ue" path="res://Spaces/SpaceScenes/Level0/Components/sideways_level_0_wall.tscn" id="6_0qqme"]
 [ext_resource type="Script" uid="uid://bpe876inkf81c" path="res://Spaces/SpaceScripts/top_secret_area.gd" id="6_6qflk"]
 [ext_resource type="PackedScene" uid="uid://dqhy302qvtcps" path="res://Objects/ObjectScenes/Kian.tscn" id="7_a3a6e"]
+[ext_resource type="Texture2D" uid="uid://dgk3rggpmxki0" path="res://Spaces/SpaceImages/rightPointedDoor.png" id="9_eqa63"]
+[ext_resource type="PackedScene" uid="uid://bu1nfypaxmvs2" path="res://Spaces/SpaceScenes/door.tscn" id="10_aagiy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5c1j0"]
 size = Vector2(483, 753)
 
 [node name="fullNoClipbleFrontWallRoom" type="Node2D" unique_id=1175133351]
+script = ExtResource("6_6qflk")
 
 [node name="Floor" type="Sprite2D" parent="." unique_id=290150787]
 position = Vector2(577, 326.5)
@@ -70,6 +73,14 @@ position = Vector2(481, -29.999998)
 
 [node name="SidewaysLevel0wall" parent="top_secret_area" unique_id=801993327 instance=ExtResource("6_0qqme")]
 position = Vector2(18, -27)
+
+[node name="Door" type="Sprite2D" parent="." unique_id=1718518883]
+position = Vector2(12.999999, 385.99994)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("9_eqa63")
+
+[node name="Door2" parent="." unique_id=555525988 instance=ExtResource("10_aagiy")]
+position = Vector2(-30, 390)
 
 [connection signal="body_entered" from="top_secret_area/topSecretRoom" to="top_secret_area" method="touch"]
 [connection signal="body_exited" from="top_secret_area/topSecretRoom" to="top_secret_area" method="untouch"]

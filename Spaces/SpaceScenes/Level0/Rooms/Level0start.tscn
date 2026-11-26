@@ -1,14 +1,11 @@
 [gd_scene format=3 uid="uid://dkqqeq2at1lru"]
 
-[ext_resource type="Script" uid="uid://dgeb6lg31w2u6" path="res://Spaces/SpaceScripts/Room.gd" id="1_iecx3"]
 [ext_resource type="Texture2D" uid="uid://cvejwopeqka4h" path="res://Spaces/SpaceImages/Level0/gray-carpet.jpg" id="1_portu"]
 [ext_resource type="PackedScene" uid="uid://bnnw1fuslexmr" path="res://Characters/CharacterScenes/Player.tscn" id="2_c6g2w"]
 [ext_resource type="PackedScene" uid="uid://sewjfvrismom" path="res://Spaces/SpaceScenes/Level0/Components/frontways_level_0_wall.tscn" id="3_c6g2w"]
 [ext_resource type="PackedScene" uid="uid://umokqs2di0ue" path="res://Spaces/SpaceScenes/Level0/Components/sideways_level_0_wall.tscn" id="4_ipp2t"]
 [ext_resource type="PackedScene" uid="uid://d0y1areqq3jn1" path="res://Characters/CharacterScenes/Enemies/Dollface.tscn" id="6_iecx3"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_dw882"]
-size = Vector2(80, 172)
+[ext_resource type="PackedScene" uid="uid://bu1nfypaxmvs2" path="res://Spaces/SpaceScenes/door.tscn" id="6_l0l0i"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_iecx3"]
 vertices = PackedVector2Array(90, 643.5, 243.29688, 642.5, 685, 642.5, 685, 806, -673.0625, 982, -336, 816, 950.03906, -398.10156, 920.9375, 982, 796, 247, 796, -245, 795, 806, 795, 314, -674.9297, -401.89063, 686, -245, 107, -41.5, 234.29688, -158, 234.29688, -37.5, 90, 523, 107, -162, 686, 247, 685, 314, 243.29688, 522, 686, -158, -333, -219, -333, -162, -443, -219, -443, 273, -446, 324, -333, 273, -333, -41.5, 686, -37.5, 685, 522, -336, 523, -336, 324, -336, 643.5, -446, 816)
@@ -17,18 +14,11 @@ outlines = Array[PackedVector2Array]([PackedVector2Array(-720, -447, 996, -443, 
 agent_radius = 45.0
 
 [node name="Level0start" type="Node2D" unique_id=1517996660]
-script = ExtResource("1_iecx3")
 
 [node name="Floor" type="Sprite2D" parent="." unique_id=1715278020]
 position = Vector2(576.5, 325.5)
 scale = Vector2(0.57435125, 0.3228543)
 texture = ExtResource("1_portu")
-
-[node name="leftDoorListener" type="Area2D" parent="." unique_id=332329591]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="leftDoorListener" unique_id=922564251]
-position = Vector2(-32, 381)
-shape = SubResource("RectangleShape2D_dw882")
 
 [node name="Dollface" parent="." unique_id=1084668826 instance=ExtResource("6_iecx3")]
 position = Vector2(358, 442)
@@ -60,9 +50,97 @@ position = Vector2(741, 1)
 position = Vector2(-388, 27)
 
 [node name="rightFrontwaysWall" parent="NavigationRegion2D" unique_id=1864200352 instance=ExtResource("3_c6g2w")]
-position = Vector2(505, -178.99998)
+position = Vector2(513, -179)
 
 [node name="leftFrontwaysWall" parent="NavigationRegion2D" unique_id=783276937 instance=ExtResource("3_c6g2w")]
 position = Vector2(-157.00002, -183)
 
-[connection signal="body_entered" from="leftDoorListener" to="." method="level_0_starter_room_left_door_listener_body_entered"]
+[node name="Door" parent="." unique_id=555525988 instance=ExtResource("6_l0l0i")]
+position = Vector2(-27, 385)
+
+[node name="Door2" parent="." unique_id=1373153966 instance=ExtResource("6_l0l0i")]
+position = Vector2(573, -65)
+rotation = 1.5707964
+scale = Vector2(1.5, 1.5)
+
+[node name="Door3" parent="." unique_id=613233169 instance=ExtResource("6_l0l0i")]
+position = Vector2(1177, 371)
+
+[node name="Door4" parent="." unique_id=1530404850 instance=ExtResource("6_l0l0i")]
+position = Vector2(570, 713)
+rotation = 1.5707964
+scale = Vector2(1.5, 1.5)
+
+[node name="Floor2" type="Sprite2D" parent="." unique_id=1910063264]
+z_index = -90
+position = Vector2(574, -313)
+scale = Vector2(0.57435125, 0.3228543)
+texture = ExtResource("1_portu")
+
+[node name="Floor3" type="Sprite2D" parent="." unique_id=559748149]
+z_index = -90
+position = Vector2(-310.99997, 371)
+rotation = 1.5707964
+scale = Vector2(0.57435125, 0.3228543)
+texture = ExtResource("1_portu")
+
+[node name="Floor4" type="Sprite2D" parent="." unique_id=790079349]
+z_index = -90
+position = Vector2(563, 978)
+scale = Vector2(0.57435125, 0.3228543)
+texture = ExtResource("1_portu")
+
+[node name="Floor5" type="Sprite2D" parent="." unique_id=293026488]
+z_index = -90
+position = Vector2(1428, 371)
+rotation = 1.5707964
+scale = Vector2(0.57435125, 0.3228543)
+texture = ExtResource("1_portu")
+
+[node name="Floor6" type="Sprite2D" parent="." unique_id=390595950]
+z_index = -90
+position = Vector2(-497, -324)
+scale = Vector2(0.57435125, 0.3228543)
+texture = ExtResource("1_portu")
+
+[node name="Floor7" type="Sprite2D" parent="." unique_id=1922779602]
+z_index = -90
+position = Vector2(1683, -321)
+scale = Vector2(0.57435125, 0.3228543)
+texture = ExtResource("1_portu")
+
+[node name="Floor8" type="Sprite2D" parent="." unique_id=1471529476]
+z_index = -90
+position = Vector2(-531, 1191)
+scale = Vector2(0.57435125, 0.3228543)
+texture = ExtResource("1_portu")
+
+[node name="Floor9" type="Sprite2D" parent="." unique_id=145639599]
+z_index = -90
+position = Vector2(1626, 1221)
+scale = Vector2(0.57435125, 0.3228543)
+texture = ExtResource("1_portu")
+
+[node name="outsideLeftUpSidewaysLevel0wall" parent="." unique_id=1892708193 instance=ExtResource("4_ipp2t")]
+position = Vector2(10, -286)
+
+[node name="outsideLeftDownSidewaysLevel0wall2" parent="." unique_id=549410630 instance=ExtResource("4_ipp2t")]
+position = Vector2(9, 1028)
+
+[node name="outsideRightUpSidewaysLevel0wall2" parent="." unique_id=1672918646 instance=ExtResource("4_ipp2t")]
+position = Vector2(1142, -296)
+
+[node name="outsideRightDownSidewaysLevel0wall3" parent="." unique_id=499437751 instance=ExtResource("4_ipp2t")]
+position = Vector2(1141, 1043)
+
+[node name="outsideTopLeftFrontwaysLevel0wall" parent="." unique_id=426953839 instance=ExtResource("3_c6g2w")]
+position = Vector2(-222.99998, -94.99999)
+
+[node name="outsideTopRightFrontwaysLevel0wall" parent="." unique_id=1088265463 instance=ExtResource("3_c6g2w")]
+position = Vector2(1374, -92)
+
+[node name="outsideBottomLeftFrontwaysLevel0wall" parent="." unique_id=697150942 instance=ExtResource("3_c6g2w")]
+position = Vector2(-222.99997, 586.99994)
+
+[node name="outsideBottomRightFrontwaysLevel0wall" parent="." unique_id=879164872 instance=ExtResource("3_c6g2w")]
+position = Vector2(1374, 589.99994)

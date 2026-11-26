@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://bu1nfypaxmvs2"]
+
+[ext_resource type="Script" uid="uid://dgeb6lg31w2u6" path="res://Spaces/SpaceScripts/Room.gd" id="1_pk3w4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dw882"]
+size = Vector2(80, 172)
+
+[node name="Door" type="Area2D" unique_id=555525988]
+script = ExtResource("1_pk3w4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2002058066]
+shape = SubResource("RectangleShape2D_dw882")
+
+[connection signal="body_entered" from="." to="." method="enter_door"]

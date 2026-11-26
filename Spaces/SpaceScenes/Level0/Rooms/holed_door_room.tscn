@@ -1,0 +1,164 @@
+[gd_scene format=3 uid="uid://3wno7hcibgeu"]
+
+[ext_resource type="Texture2D" uid="uid://b17lv7dbxegud" path="res://Spaces/SpaceImages/Level0/yellowGround.jpeg" id="1_bqou7"]
+[ext_resource type="PackedScene" uid="uid://446wn8607f71" path="res://Spaces/SpaceScenes/Level0/Components/pichfall.tscn" id="2_a4n6l"]
+[ext_resource type="PackedScene" uid="uid://bnnw1fuslexmr" path="res://Characters/CharacterScenes/Player.tscn" id="3_261pr"]
+
+[node name="HoledDoorRoom" type="Node2D" unique_id=145884881]
+
+[node name="Ground" type="Sprite2D" parent="." unique_id=647672843]
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("1_bqou7")
+
+[node name="Pichfall2" parent="." unique_id=794658948 instance=ExtResource("2_a4n6l")]
+position = Vector2(98, 0)
+
+[node name="Pichfall3" parent="." unique_id=625036113 instance=ExtResource("2_a4n6l")]
+position = Vector2(-885, 457)
+
+[node name="Pichfall4" parent="." unique_id=1361923048 instance=ExtResource("2_a4n6l")]
+position = Vector2(-885, -240)
+
+[node name="Pichfall5" parent="." unique_id=123443363 instance=ExtResource("2_a4n6l")]
+position = Vector2(-886, 239)
+
+[node name="Pichfall6" parent="." unique_id=978558848 instance=ExtResource("2_a4n6l")]
+position = Vector2(-686, -469)
+
+[node name="Pichfall7" parent="." unique_id=608576204 instance=ExtResource("2_a4n6l")]
+position = Vector2(-686, 0)
+
+[node name="Pichfall8" parent="." unique_id=770324293 instance=ExtResource("2_a4n6l")]
+position = Vector2(-686, 457)
+
+[node name="Pichfall9" parent="." unique_id=1234286815 instance=ExtResource("2_a4n6l")]
+position = Vector2(-686, -240)
+
+[node name="Pichfall10" parent="." unique_id=85445633 instance=ExtResource("2_a4n6l")]
+position = Vector2(-687, 239)
+
+[node name="Pichfall11" parent="." unique_id=277588786 instance=ExtResource("2_a4n6l")]
+position = Vector2(-485, -469)
+
+[node name="Pichfall12" parent="." unique_id=970292127 instance=ExtResource("2_a4n6l")]
+position = Vector2(-485, 0)
+
+[node name="Pichfall13" parent="." unique_id=1655586581 instance=ExtResource("2_a4n6l")]
+position = Vector2(-485, 457)
+
+[node name="Pichfall14" parent="." unique_id=713160160 instance=ExtResource("2_a4n6l")]
+position = Vector2(-485, -240)
+
+[node name="Pichfall15" parent="." unique_id=1883828154 instance=ExtResource("2_a4n6l")]
+position = Vector2(-486, 239)
+
+[node name="Pichfall16" parent="." unique_id=168205254 instance=ExtResource("2_a4n6l")]
+position = Vector2(-286, -469)
+
+[node name="Pichfall" parent="." unique_id=1696284388 instance=ExtResource("2_a4n6l")]
+position = Vector2(-885, -469)
+
+[node name="Pichfall17" parent="." unique_id=1428497038 instance=ExtResource("2_a4n6l")]
+position = Vector2(-286, 0)
+
+[node name="Pichfall18" parent="." unique_id=1031213893 instance=ExtResource("2_a4n6l")]
+position = Vector2(-286, 457)
+
+[node name="Pichfall19" parent="." unique_id=1950788407 instance=ExtResource("2_a4n6l")]
+position = Vector2(-286, -240)
+
+[node name="Pichfall20" parent="." unique_id=1658855088 instance=ExtResource("2_a4n6l")]
+position = Vector2(-287, 239)
+
+[node name="Pichfall21" parent="." unique_id=99277309 instance=ExtResource("2_a4n6l")]
+position = Vector2(-101, -469)
+
+[node name="Pichfall22" parent="." unique_id=1717794316 instance=ExtResource("2_a4n6l")]
+position = Vector2(-101, 0)
+
+[node name="Pichfall23" parent="." unique_id=285740371 instance=ExtResource("2_a4n6l")]
+position = Vector2(-101, 457)
+
+[node name="Pichfall24" parent="." unique_id=167974157 instance=ExtResource("2_a4n6l")]
+position = Vector2(-101, -240)
+
+[node name="Pichfall25" parent="." unique_id=1866971083 instance=ExtResource("2_a4n6l")]
+position = Vector2(-102, 239)
+
+[node name="Pichfall26" parent="." unique_id=542066541 instance=ExtResource("2_a4n6l")]
+position = Vector2(98, -469)
+
+[node name="Pichfall27" parent="." unique_id=1500004594 instance=ExtResource("2_a4n6l")]
+position = Vector2(-885, 0)
+
+[node name="Pichfall28" parent="." unique_id=1276854750 instance=ExtResource("2_a4n6l")]
+position = Vector2(98, 457)
+
+[node name="Pichfall29" parent="." unique_id=485347465 instance=ExtResource("2_a4n6l")]
+position = Vector2(98, -240)
+
+[node name="Pichfall30" parent="." unique_id=1099884620 instance=ExtResource("2_a4n6l")]
+position = Vector2(97, 239)
+
+[node name="Pichfall31" parent="." unique_id=1568747403 instance=ExtResource("2_a4n6l")]
+position = Vector2(299, -469)
+
+[node name="Pichfall32" parent="." unique_id=64289851 instance=ExtResource("2_a4n6l")]
+position = Vector2(299, 0)
+
+[node name="Pichfall33" parent="." unique_id=1575406371 instance=ExtResource("2_a4n6l")]
+position = Vector2(299, 457)
+
+[node name="Pichfall34" parent="." unique_id=179669596 instance=ExtResource("2_a4n6l")]
+position = Vector2(299, -240)
+
+[node name="Pichfall35" parent="." unique_id=34700928 instance=ExtResource("2_a4n6l")]
+position = Vector2(298, 239)
+
+[node name="Pichfall36" parent="." unique_id=720151931 instance=ExtResource("2_a4n6l")]
+position = Vector2(498, -469)
+
+[node name="Pichfall37" parent="." unique_id=1760234671 instance=ExtResource("2_a4n6l")]
+position = Vector2(498, 0)
+
+[node name="Pichfall38" parent="." unique_id=1718251544 instance=ExtResource("2_a4n6l")]
+position = Vector2(498, 457)
+
+[node name="Pichfall39" parent="." unique_id=1349346034 instance=ExtResource("2_a4n6l")]
+position = Vector2(498, -240)
+
+[node name="Pichfall40" parent="." unique_id=599961277 instance=ExtResource("2_a4n6l")]
+position = Vector2(497, 239)
+
+[node name="Pichfall41" parent="." unique_id=367105439 instance=ExtResource("2_a4n6l")]
+position = Vector2(699, -469)
+
+[node name="Pichfall42" parent="." unique_id=1018427046 instance=ExtResource("2_a4n6l")]
+position = Vector2(699, 0)
+
+[node name="Pichfall43" parent="." unique_id=1664909614 instance=ExtResource("2_a4n6l")]
+position = Vector2(699, 457)
+
+[node name="Pichfall44" parent="." unique_id=1755843933 instance=ExtResource("2_a4n6l")]
+position = Vector2(699, -240)
+
+[node name="Pichfall45" parent="." unique_id=1619345046 instance=ExtResource("2_a4n6l")]
+position = Vector2(698, 239)
+
+[node name="Pichfall46" parent="." unique_id=1191803264 instance=ExtResource("2_a4n6l")]
+position = Vector2(898, -469)
+
+[node name="Pichfall47" parent="." unique_id=1430023598 instance=ExtResource("2_a4n6l")]
+position = Vector2(898, 0)
+
+[node name="Pichfall48" parent="." unique_id=919729030 instance=ExtResource("2_a4n6l")]
+position = Vector2(898, 457)
+
+[node name="Pichfall49" parent="." unique_id=1240453215 instance=ExtResource("2_a4n6l")]
+position = Vector2(898, -240)
+
+[node name="Pichfall50" parent="." unique_id=1520376470 instance=ExtResource("2_a4n6l")]
+position = Vector2(897, 239)
+
+[node name="Player" parent="." unique_id=656459508 instance=ExtResource("3_261pr")]
+position = Vector2(-3, 116)

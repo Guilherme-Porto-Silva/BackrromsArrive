@@ -102,3 +102,9 @@ func null_zone_right_level_0_wall_left_body_exited(body: Node2D) -> void:
 	if body.is_in_group("players"):
 	
 		afastou()
+
+
+
+func _on_lower_door_listener_body_entered(body: Node2D) -> void:
+	
+	pass # Replace with function body.

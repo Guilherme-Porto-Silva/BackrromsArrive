@@ -105,6 +105,40 @@ func null_zone_right_level_0_wall_left_body_exited(body: Node2D) -> void:
 
 
 
-func _on_lower_door_listener_body_entered(body: Node2D) -> void:
+func null_zone_left_level_0_body_entered(body: Node2D) -> void:
 	
-	pass # Replace with function body.
+	if body.is_in_group("players"):
+		
+		aproximou()
+
+
+
+func moist_left_wall_area_body_entered(body: Node2D) -> void:
+	
+	if body.is_in_group("players"):
+		
+		aproximou()
+
+
+
+func moist_left_wall_area_body_exited(body: Node2D) -> void:
+	
+	if body.is_in_group("players"):
+		
+		afastou()
+
+
+
+func moist_right_wall_area_body_entered(body: Node2D) -> void:
+	
+	if body.is_in_group("players"):
+		
+		aproximou()
+
+
+
+func moist_right_wall_area_body_exited(body: Node2D) -> void:
+	
+	if body.is_in_group("players"):
+		
+		afastou()

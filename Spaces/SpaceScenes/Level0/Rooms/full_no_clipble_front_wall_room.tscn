@@ -10,27 +10,23 @@
 [ext_resource type="PackedScene" uid="uid://dqhy302qvtcps" path="res://Objects/ObjectScenes/Kian.tscn" id="7_a3a6e"]
 [ext_resource type="Texture2D" uid="uid://dgk3rggpmxki0" path="res://Spaces/SpaceImages/rightPointedDoor.png" id="9_eqa63"]
 [ext_resource type="PackedScene" uid="uid://bu1nfypaxmvs2" path="res://Spaces/SpaceScenes/door.tscn" id="10_aagiy"]
+[ext_resource type="PackedScene" uid="uid://d0y1areqq3jn1" path="res://Characters/CharacterScenes/Enemies/Dollface.tscn" id="11_xvfdy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5c1j0"]
 size = Vector2(483, 753)
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_5c1j0"]
+vertices = PackedVector2Array(1489.0391, -106.28125, 1495.9531, 1348, 1424, 1197, 1424, -13, 652, -131.28906, 1384, -13, -172.14844, 1348, 1403, 1198.5, -202.85156, -693.35156, 652, -723.6406, 457.29688, 149, 276, -26.5, 1384, 126.60156, 903.25, 126.60156, 903.25, 149, 922, 199.5, 922, 194.39844, 1384, 194.39844, 1384, 1148, 457.29688, 199.5, 20, 1148, 276, 203, 20, 203, -9, -26.5, -9, -13, -20, -13, -20, 1197, -2.703125, 1197, -2.703125, 1198.5, 1403, 1197)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 0, 3, 5), PackedInt32Array(2, 1, 6, 7), PackedInt32Array(8, 9, 4, 10, 11), PackedInt32Array(5, 12, 13, 4), PackedInt32Array(13, 14, 10, 4), PackedInt32Array(15, 16, 17, 18), PackedInt32Array(19, 15, 18, 20, 21), PackedInt32Array(20, 22, 21), PackedInt32Array(19, 21, 11, 10), PackedInt32Array(8, 11, 23), PackedInt32Array(23, 24, 25, 8), PackedInt32Array(26, 27, 28, 6), PackedInt32Array(7, 29, 2), PackedInt32Array(28, 7, 6), PackedInt32Array(26, 6, 8, 25)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-213, -703, 662, -734, 662, -141, 1499, -116, 1506, 1358, -182, 1358)])
 
 [node name="fullNoClipbleFrontWallRoom" type="Node2D" unique_id=1175133351]
 script = ExtResource("6_6qflk")
 
 [node name="Floor" type="Sprite2D" parent="." unique_id=290150787]
-position = Vector2(577, 326.5)
-scale = Vector2(0.5758483, 0.3258483)
+position = Vector2(707, 690)
+scale = Vector2(0.70359284, 0.5)
 texture = ExtResource("1_8qu7m")
-
-[node name="moistLeftNullZoneRightLevel0wall" parent="." unique_id=967988161 instance=ExtResource("2_g85lf")]
-z_index = 20
-position = Vector2(261, 85)
-
-[node name="FrontwaysLevel0wall" parent="." unique_id=783276937 instance=ExtResource("3_0qqme")]
-position = Vector2(692.99994, 92.99999)
-
-[node name="LeftMoistLevel0wall" parent="." unique_id=1185216262 instance=ExtResource("4_a3a6e")]
-position = Vector2(1146, 72)
 
 [node name="Guigui-chan" parent="." unique_id=656459508 instance=ExtResource("5_g85lf")]
 visibility_layer = 4
@@ -75,12 +71,59 @@ position = Vector2(481, -29.999998)
 position = Vector2(18, -27)
 
 [node name="Door" type="Sprite2D" parent="." unique_id=1718518883]
-position = Vector2(12.999999, 385.99994)
+position = Vector2(21.999996, 385.9999)
 scale = Vector2(0.2, 0.2)
 texture = ExtResource("9_eqa63")
 
 [node name="Door2" parent="." unique_id=555525988 instance=ExtResource("10_aagiy")]
-position = Vector2(-30, 390)
+position = Vector2(-12, 390)
+
+[node name="Dollface" parent="." unique_id=1084668826 instance=ExtResource("11_xvfdy")]
+position = Vector2(517, 1053)
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="." unique_id=1945756294]
+navigation_polygon = SubResource("NavigationPolygon_5c1j0")
+
+[node name="moistLeftNullZoneRightLevel0wall" parent="NavigationRegion2D" unique_id=967988161 instance=ExtResource("2_g85lf")]
+z_index = 20
+position = Vector2(261, 85)
+
+[node name="FrontwaysLevel0wall" parent="NavigationRegion2D" unique_id=783276937 instance=ExtResource("3_0qqme")]
+position = Vector2(692.99994, 92.99999)
+
+[node name="LeftMoistLevel0wall" parent="NavigationRegion2D" unique_id=1185216262 instance=ExtResource("4_a3a6e")]
+position = Vector2(1146, 91)
+scale = Vector2(0.25, 0.2)
+
+[node name="SidewaysLevel0wall" parent="NavigationRegion2D" unique_id=1871092142 instance=ExtResource("6_0qqme")]
+position = Vector2(0, 198.00002)
+
+[node name="SidewaysLevel0wall2" parent="NavigationRegion2D" unique_id=1835244213 instance=ExtResource("6_0qqme")]
+position = Vector2(0, 598)
+
+[node name="SidewaysLevel0wall3" parent="NavigationRegion2D" unique_id=993055745 instance=ExtResource("6_0qqme")]
+position = Vector2(0, 986)
+
+[node name="SidewaysLevel0wall4" parent="NavigationRegion2D" unique_id=283266584 instance=ExtResource("6_0qqme")]
+position = Vector2(1404, 198.00002)
+
+[node name="SidewaysLevel0wall5" parent="NavigationRegion2D" unique_id=1470548368 instance=ExtResource("6_0qqme")]
+position = Vector2(1404, 598)
+
+[node name="SidewaysLevel0wall6" parent="NavigationRegion2D" unique_id=39761340 instance=ExtResource("6_0qqme")]
+position = Vector2(1404, 986)
+
+[node name="FrontwaysLevel0wall2" parent="NavigationRegion2D" unique_id=665787065 instance=ExtResource("3_0qqme")]
+position = Vector2(232.99998, 1091.9999)
+
+[node name="FrontwaysLevel0wall3" parent="NavigationRegion2D" unique_id=1783950526 instance=ExtResource("3_0qqme")]
+position = Vector2(660, 1092.0001)
+
+[node name="FrontwaysLevel0wall4" parent="NavigationRegion2D" unique_id=752040264 instance=ExtResource("3_0qqme")]
+position = Vector2(731.00006, 1091.9999)
+
+[node name="FrontwaysLevel0wall5" parent="NavigationRegion2D" unique_id=1983314715 instance=ExtResource("3_0qqme")]
+position = Vector2(1174, 1092.0004)
 
 [connection signal="body_entered" from="top_secret_area/topSecretRoom" to="top_secret_area" method="touch"]
 [connection signal="body_exited" from="top_secret_area/topSecretRoom" to="top_secret_area" method="untouch"]

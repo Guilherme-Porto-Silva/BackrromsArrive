@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://c07o0uenmorj"]
+
+[node name="End" type="Node2D" unique_id=425360]
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=362113152]
+offset_right = 1154.0
+offset_bottom = 648.0
+
+[node name="Label" type="Label" parent="." unique_id=290122282]
+offset_left = 57.0
+offset_top = 168.0
+offset_right = 1120.0
+offset_bottom = 365.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 25
+text = "Voce conseguiu chegar ao nivel 4!
+
+Infelizmente, nos nao implementamos o nivel 4 ainda.
+
+Na disciplina Opitativa II, implementaremos esse nivel, e, ai, voce podera ganhar o jogo."
+
+[node name="S2" type="Label" parent="." unique_id=777664318]
+offset_left = 460.0
+offset_top = 384.0
+offset_right = 500.0
+offset_bottom = 419.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 25
+text = "S2"

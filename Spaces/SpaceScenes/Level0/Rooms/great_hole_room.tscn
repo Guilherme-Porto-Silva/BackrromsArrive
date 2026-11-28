@@ -1,0 +1,62 @@
+[gd_scene format=3 uid="uid://cpppnp6vpx0eu"]
+
+[ext_resource type="Script" uid="uid://cqv7v6ashp4mj" path="res://Spaces/SpaceScripts/pichfall.gd" id="1_amcek"]
+[ext_resource type="PackedScene" uid="uid://jo7lvnvqnrkq" path="res://Spaces/SpaceScenes/Level0/Components/holes/circular_pitchfall.tscn" id="2_3evu0"]
+[ext_resource type="PackedScene" uid="uid://bnnw1fuslexmr" path="res://Characters/CharacterScenes/Player.tscn" id="3_vclgj"]
+[ext_resource type="PackedScene" uid="uid://srqtrqr4x6p1" path="res://Spaces/SpaceScenes/Level0/Components/moist/left_moist_level_0_wall.tscn" id="4_odmcq"]
+[ext_resource type="PackedScene" uid="uid://sewjfvrismom" path="res://Spaces/SpaceScenes/Level0/Components/frontways_level_0_wall.tscn" id="5_fr5pr"]
+[ext_resource type="PackedScene" uid="uid://dp7o7215oo1u1" path="res://Spaces/SpaceScenes/Level0/Components/moist/right_moist_level_0_wall.tscn" id="6_q1ip7"]
+[ext_resource type="PackedScene" uid="uid://umokqs2di0ue" path="res://Spaces/SpaceScenes/Level0/Components/sideways_level_0_wall.tscn" id="7_4mpag"]
+[ext_resource type="PackedScene" uid="uid://bu1nfypaxmvs2" path="res://Spaces/SpaceScenes/door.tscn" id="8_crjq0"]
+[ext_resource type="Texture2D" uid="uid://cctwi5jc3wmvy" path="res://Spaces/SpaceImages/frontwaysDoor.png" id="9_g45ko"]
+
+[node name="GreatHoleRoom" type="Node2D" unique_id=1971390342]
+script = ExtResource("1_amcek")
+
+[node name="CircularPitchfall" parent="." unique_id=1970529469 instance=ExtResource("2_3evu0")]
+scale = Vector2(1.5, 1.5)
+
+[node name="Player" parent="." unique_id=656459508 instance=ExtResource("3_vclgj")]
+position = Vector2(412, 395)
+
+[node name="LeftMoistLevel0wall" parent="." unique_id=1185216262 instance=ExtResource("4_odmcq")]
+position = Vector2(-259, -608)
+
+[node name="FrontwaysLevel0wall" parent="." unique_id=783276937 instance=ExtResource("5_fr5pr")]
+position = Vector2(213, -606)
+scale = Vector2(0.25, 0.25)
+
+[node name="FrontwaysLevel0wall2" parent="." unique_id=1965586831 instance=ExtResource("5_fr5pr")]
+position = Vector2(-212, 373)
+scale = Vector2(0.25, 0.25)
+
+[node name="RightMoistLevel0wall" parent="." unique_id=1299408016 instance=ExtResource("6_q1ip7")]
+position = Vector2(249, 374)
+
+[node name="SidewaysLevel0wall" parent="." unique_id=801993327 instance=ExtResource("7_4mpag")]
+position = Vector2(-500, -513)
+
+[node name="SidewaysLevel0wall2" parent="." unique_id=890022587 instance=ExtResource("7_4mpag")]
+position = Vector2(-501, -110)
+
+[node name="SidewaysLevel0wall3" parent="." unique_id=716859554 instance=ExtResource("7_4mpag")]
+position = Vector2(-500, 288)
+
+[node name="SidewaysLevel0wall4" parent="." unique_id=247026085 instance=ExtResource("7_4mpag")]
+position = Vector2(500, -513)
+
+[node name="SidewaysLevel0wall5" parent="." unique_id=208537546 instance=ExtResource("7_4mpag")]
+position = Vector2(500, -110)
+
+[node name="SidewaysLevel0wall6" parent="." unique_id=620191113 instance=ExtResource("7_4mpag")]
+position = Vector2(500, 288)
+
+[node name="Door" parent="." unique_id=555525988 instance=ExtResource("8_crjq0")]
+position = Vector2(-1, -567)
+
+[node name="DoorSprite" type="Sprite2D" parent="." unique_id=1948743682]
+position = Vector2(0, -563.99994)
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("9_g45ko")
+
+[connection signal="body_entered" from="CircularPitchfall" to="." method="_on_circular_pitchfall_body_entered"]

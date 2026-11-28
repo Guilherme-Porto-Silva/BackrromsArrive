@@ -86,7 +86,7 @@ texture = ExtResource("1_portu")
 
 [node name="Floor4" type="Sprite2D" parent="." unique_id=790079349]
 z_index = -90
-position = Vector2(563, 978)
+position = Vector2(563, 969.00006)
 scale = Vector2(0.57435125, 0.3228543)
 texture = ExtResource("1_portu")
 

@@ -28,6 +28,7 @@ window/stretch/aspect="expand"
 
 players="The pleyers of the game."
 enemies="The enemies of the game."
+entities=""
 
 [input]
 

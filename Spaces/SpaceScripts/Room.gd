@@ -7,7 +7,8 @@ const ROOM_NAMES: Array = [
 	[
 	"res://Spaces/SpaceScenes/Level0/Rooms/full_no_clipble_front_wall_room.tscn",
 	"res://Spaces/SpaceScenes/Level0/Rooms/Level0start.tscn",
-	"res://Spaces/SpaceScenes/Level0/Rooms/holed_door_room.tscn"
+	"res://Spaces/SpaceScenes/Level0/Rooms/holed_door_room.tscn",
+	"res://Spaces/SpaceScenes/Level0/Rooms/great_hole_room.tscn"
 	]
 ]
 

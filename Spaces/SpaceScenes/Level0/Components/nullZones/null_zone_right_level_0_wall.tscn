@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://c1tipko1fomhi" path="res://Spaces/SpaceImages/Level0/level0nullWall.png" id="2_ek00y"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dw882"]
-size = Vector2(448, 414)
+size = Vector2(448, 80)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5c1j0"]
 size = Vector2(398, 392)
@@ -19,11 +19,11 @@ scale = Vector2(0.40529618, 0.43941796)
 texture = ExtResource("1_jo7ph")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1287623881]
-position = Vector2(211, 0)
+position = Vector2(205, 0)
 texture = ExtResource("2_ek00y")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=86071695]
-position = Vector2(-227, 1)
+position = Vector2(-227, 168)
 shape = SubResource("RectangleShape2D_dw882")
 
 [node name="WallArea" type="Area2D" parent="." unique_id=1230719448]

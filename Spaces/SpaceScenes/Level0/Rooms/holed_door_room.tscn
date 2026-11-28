@@ -1,13 +1,19 @@
 [gd_scene format=3 uid="uid://3wno7hcibgeu"]
 
 [ext_resource type="Texture2D" uid="uid://b17lv7dbxegud" path="res://Spaces/SpaceImages/Level0/yellowGround.jpeg" id="1_bqou7"]
-[ext_resource type="PackedScene" uid="uid://446wn8607f71" path="res://Spaces/SpaceScenes/Level0/Components/pichfall.tscn" id="2_a4n6l"]
+[ext_resource type="PackedScene" uid="uid://446wn8607f71" path="res://Spaces/SpaceScenes/Level0/Components/holes/pichfall.tscn" id="2_a4n6l"]
 [ext_resource type="PackedScene" uid="uid://bnnw1fuslexmr" path="res://Characters/CharacterScenes/Player.tscn" id="3_261pr"]
+[ext_resource type="PackedScene" uid="uid://bu1nfypaxmvs2" path="res://Spaces/SpaceScenes/door.tscn" id="4_261pr"]
+[ext_resource type="Texture2D" uid="uid://dgk3rggpmxki0" path="res://Spaces/SpaceImages/rightPointedDoor.png" id="5_5mng7"]
+[ext_resource type="PackedScene" uid="uid://umokqs2di0ue" path="res://Spaces/SpaceScenes/Level0/Components/sideways_level_0_wall.tscn" id="6_yhmam"]
+[ext_resource type="PackedScene" uid="uid://sewjfvrismom" path="res://Spaces/SpaceScenes/Level0/Components/frontways_level_0_wall.tscn" id="7_i3te0"]
+[ext_resource type="PackedScene" uid="uid://cpmhig7muorif" path="res://Spaces/SpaceScenes/Level0/Components/nullZones/null_zone_right_level_0_wall.tscn" id="8_i3te0"]
 
 [node name="HoledDoorRoom" type="Node2D" unique_id=145884881]
 
 [node name="Ground" type="Sprite2D" parent="." unique_id=647672843]
-scale = Vector2(1.5, 1.5)
+position = Vector2(0, -71.5)
+scale = Vector2(1.5, 1.8138021)
 texture = ExtResource("1_bqou7")
 
 [node name="Pichfall2" parent="." unique_id=794658948 instance=ExtResource("2_a4n6l")]
@@ -56,7 +62,7 @@ position = Vector2(-486, 239)
 position = Vector2(-286, -469)
 
 [node name="Pichfall" parent="." unique_id=1696284388 instance=ExtResource("2_a4n6l")]
-position = Vector2(-885, -469)
+position = Vector2(-886, -469)
 
 [node name="Pichfall17" parent="." unique_id=1428497038 instance=ExtResource("2_a4n6l")]
 position = Vector2(-286, 0)
@@ -162,3 +168,58 @@ position = Vector2(897, 239)
 
 [node name="Player" parent="." unique_id=656459508 instance=ExtResource("3_261pr")]
 position = Vector2(-3, 116)
+
+[node name="Door" parent="." unique_id=555525988 instance=ExtResource("4_261pr")]
+position = Vector2(-1068, 0)
+
+[node name="DoorSprite" type="Sprite2D" parent="." unique_id=1647565644]
+position = Vector2(-1023.00006, 0.9999995)
+scale = Vector2(0.18, 0.18)
+texture = ExtResource("5_5mng7")
+
+[node name="SidewaysLevel0wall" parent="." unique_id=801993327 instance=ExtResource("6_yhmam")]
+position = Vector2(-1036, -347)
+scale = Vector2(1, 2)
+
+[node name="SidewaysLevel0wall2" parent="." unique_id=1519662033 instance=ExtResource("6_yhmam")]
+position = Vector2(-1037, 352)
+scale = Vector2(1, 2)
+
+[node name="SidewaysLevel0wall3" parent="." unique_id=1695236883 instance=ExtResource("6_yhmam")]
+position = Vector2(1036, -311)
+scale = Vector2(1, 2.5)
+
+[node name="SidewaysLevel0wall4" parent="." unique_id=527567511 instance=ExtResource("6_yhmam")]
+position = Vector2(1036, 311)
+scale = Vector2(1, 2.5)
+
+[node name="FrontwaysLevel0wall" parent="." unique_id=783276937 instance=ExtResource("7_i3te0")]
+position = Vector2(-886.99994, -678)
+
+[node name="FrontwaysLevel0wall2" parent="." unique_id=2109944296 instance=ExtResource("7_i3te0")]
+position = Vector2(-442.99994, -677.99976)
+
+[node name="FrontwaysLevel0wall3" parent="." unique_id=113348547 instance=ExtResource("7_i3te0")]
+position = Vector2(1, -678)
+
+[node name="FrontwaysLevel0wall4" parent="." unique_id=1929591246 instance=ExtResource("7_i3te0")]
+position = Vector2(445, -678)
+
+[node name="FrontwaysLevel0wall5" parent="." unique_id=2124220760 instance=ExtResource("7_i3te0")]
+position = Vector2(888, -678)
+
+[node name="FrontwaysLevel0wall6" parent="." unique_id=1306999009 instance=ExtResource("7_i3te0")]
+position = Vector2(-886.99994, 535.0001)
+
+[node name="FrontwaysLevel0wall7" parent="." unique_id=1943250630 instance=ExtResource("7_i3te0")]
+position = Vector2(-442.99994, 535.0001)
+
+[node name="FrontwaysLevel0wall9" parent="." unique_id=1278404527 instance=ExtResource("7_i3te0")]
+position = Vector2(445, 535.0001)
+
+[node name="FrontwaysLevel0wall10" parent="." unique_id=1173915030 instance=ExtResource("7_i3te0")]
+position = Vector2(888, 535.0001)
+
+[node name="nullZoneRightLevel0wall" parent="." unique_id=199985938 instance=ExtResource("8_i3te0")]
+position = Vector2(-26, 538)
+scale = Vector2(0.6, 0.45)

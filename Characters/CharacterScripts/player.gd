@@ -14,9 +14,15 @@ var player_sprite: Sprite2D
 
 var direction: String
 
+var incapacitated: bool
+
 
 
 func move() -> void:
+	
+	if incapacitated:
+		
+		return
 	
 	var movement: Vector2 = Vector2(Input.get_axis("walkLeft", "walkRight"), Input.get_axis("walkFront", "walkBack"))
 
@@ -52,6 +58,8 @@ func chose_sprite() -> void:
 
 func _ready() -> void:
 	
+	incapacitated = false
+	
 	player_sprite = $PlayerSprite
 	
 	animated_sprite = $PlayerAnimatedSprite
@@ -63,6 +71,8 @@ func _ready() -> void:
 	update_health_bar()
 	
 	direction = "down"
+	
+	z_index = 1
 	
 	Memory.player = self
 
@@ -149,3 +159,13 @@ func manege_rotation(movement: Vector2) -> void:
 		direction = "left"
 	
 	change_animation(state + '_' + direction)
+
+
+
+func fall() -> void:
+	
+	incapacitated = true
+	
+	velocity = velocity * 0.1
+	
+	change_animation("falling_" + direction)

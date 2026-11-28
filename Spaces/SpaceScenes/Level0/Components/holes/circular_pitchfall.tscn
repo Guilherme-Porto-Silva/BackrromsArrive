@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://jo7lvnvqnrkq"]
+
+[ext_resource type="Texture2D" uid="uid://cppsnasf26e1i" path="res://Spaces/SpaceImages/Level0/circularPitchfall.png" id="1_egtxy"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5c1j0"]
+radius = 248.09877
+
+[node name="CircularPitchfall" type="Area2D" unique_id=1970529469]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1292419204]
+texture = ExtResource("1_egtxy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1985897846]
+scale = Vector2(1.05, 0.98)
+shape = SubResource("CircleShape2D_5c1j0")
